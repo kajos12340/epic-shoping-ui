@@ -11,11 +11,9 @@ const endpoint = process.env.REACT_APP_BE_ADDRESS;
 
 let socket: typeof Socket;
 
-// const roomName = `room-${+(new Date())}`;
-const roomName = 'room-123';
-
 const App = () => {
   const [name, setName] = useState('');
+  const [roomName, setRoomName] = useState('');
   const [response1, setResponse1] = useState<Object>();
   const [responseWS, setResponseWS] = useState<Object>();
   const [responseWS2, setResponseWS2] = useState<(string | null)[]>([]);
@@ -70,6 +68,7 @@ const App = () => {
         {responseWS}
       </div>
       <input value={name} onChange={(e) => setName(e.target.value)} />
+      <input value={roomName} onChange={(e) => setRoomName(e.target.value)} />
       <button type="button" onClick={click}>
         join room
       </button>
