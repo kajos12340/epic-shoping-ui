@@ -6,22 +6,30 @@ import Register from '../pages/Register';
 import ShoppingLists from '../pages/ShoppingLists';
 import ShoppingList from '../pages/ShoppingList';
 import NotFound from '../pages/NotFound';
+import Messages from '../pages/Messages';
+import User from '../pages/User';
 
 const Router = () => (
   <Switch>
     <Route exact path="/">
       <ShoppingLists />
     </Route>
-    <Route exact path="/login">
+    <Route exact path="/user/login">
       <Login />
     </Route>
-    <Route exact path="/register">
+    <Route exact path="/user/register">
       <Register />
     </Route>
-    <Route exact path="/shopping-lists">
+    <Route exact path="/shopping/lists">
       <ShoppingLists />
     </Route>
-    <Route exact path="/shopping-list/:id">
+    <Route exact path="/messages">
+      <Messages />
+    </Route>
+    <Route exact path="/user">
+      <User />
+    </Route>
+    <Route exact path="/shopping/list/:id">
       <ShoppingList />
     </Route>
     <Route>
