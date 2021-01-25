@@ -4,10 +4,7 @@ import { useLocation } from 'react-router-dom';
 import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
 import ListOutlinedIcon from '@material-ui/icons/ListOutlined';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
-import MobileMenu from './MobileMenu/MobileMenu';
-import ScreenMenu from './ScreenMenu/ScreenMenu';
-
-import { MobileMenuContainer, ScreenMenuContainer } from './Navigation.styles';
+import Menu from './Menu/Menu';
 
 export interface IMenuOption {
   to: string,
@@ -60,23 +57,8 @@ const Navigation = () => {
     }
   }, [location]);
 
-  const mobileMenu = (
-    <MobileMenuContainer>
-      <MobileMenu menuOptions={menuOptions} currentActiveTab={currentActiveTab} />
-    </MobileMenuContainer>
-  );
-
-  const screenMenu = (
-    <ScreenMenuContainer>
-      <ScreenMenu menuOptions={menuOptions} currentActiveTab={currentActiveTab} />
-    </ScreenMenuContainer>
-  );
-
   return (
-    <>
-      {mobileMenu}
-      {screenMenu}
-    </>
+    <Menu menuOptions={menuOptions} currentActiveTab={currentActiveTab} />
   );
 };
 
