@@ -3,7 +3,7 @@ import {
   Typography, Button, Link, Grid, Box, Paper,
 } from '@material-ui/core';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
 
@@ -21,6 +21,7 @@ const LoginForm = () => {
   const [loading, setLoading] = useState(false);
   const form = useForm();
   const { enqueueSnackbar } = useSnackbar();
+  const history = useHistory();
 
   const dispatch = useDispatch();
 
@@ -45,6 +46,7 @@ const LoginForm = () => {
       enqueueSnackbar('Zalogowano!', {
         variant: 'success',
       });
+      history.push('/');
     } catch (err) {
       enqueueSnackbar('Nieporawne dane logowania!', {
         variant: 'error',
