@@ -9,6 +9,8 @@ import Router from './Router/Router';
 import Navigation from './components/Navigation/Navigation';
 import theme from './Theme/Theme';
 
+import { MobileSpacer } from './components/Navigation/Menu/Menu.styles';
+
 setupAxiosBaseUrl(process.env.REACT_APP_BE_ADDRESS);
 
 const App = () => (
@@ -23,6 +25,7 @@ const App = () => (
         </Container>
       </Box>
     </BrowserRouter>
+    <MobileSpacer />
   </ThemeProvider>
 );
 

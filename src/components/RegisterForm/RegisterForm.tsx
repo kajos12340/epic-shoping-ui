@@ -1,6 +1,6 @@
 import React, { FormEvent } from 'react';
 import {
-  Typography, Button, Link, Grid,
+  Typography, Button, Link, Grid, Paper, Box,
 } from '@material-ui/core';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import { Link as RouterLink } from 'react-router-dom';
@@ -37,57 +37,68 @@ const RegisterForm = () => {
   return (
     <Grid container justify="center">
       <Grid md={12} lg={5}>
-        <Grid container justify="center">
-          <Avatar>
-            <PersonAddIcon />
-          </Avatar>
-        </Grid>
-        <Typography component="h1" variant="h5">
-          Rejestracja
-        </Typography>
-        <form noValidate onSubmit={handleSubmit}>
-          <Input
-            id="login"
-            label="Login"
-            form={form}
-            validators={validators}
-          />
-          <Input
-            id="email"
-            label="Adres email"
-            form={form}
-            validators={validators}
-          />
-          <Input
-            id="password"
-            label="Hasło"
-            form={form}
-            validators={validators}
-            type="password"
-          />
-          <Input
-            id="rePassword"
-            label="Powtórz hasło"
-            form={form}
-            validators={validators}
-            type="password"
-          />
-          <br />
-          <br />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-          >
-            Zarejestruj
-          </Button>
-        </form>
-        <LoginLinkContainer>
-          <Link to="/user/login" variant="body2" component={RouterLink} onClick={() => console.log('click')}>
-            Posiadasz konto? Zaloguj się!
-          </Link>
-        </LoginLinkContainer>
+        <Paper>
+          <Box p={5}>
+            <Grid container justify="center">
+              <Avatar>
+                <PersonAddIcon />
+              </Avatar>
+            </Grid>
+            <Typography component="h1" variant="h5">
+              Rejestracja
+            </Typography>
+            <form noValidate onSubmit={handleSubmit}>
+              <Input
+                id="login"
+                label="Login"
+                form={form}
+                validators={validators}
+              />
+              <Input
+                id="email"
+                label="Adres email"
+                form={form}
+                validators={validators}
+              />
+              <Input
+                id="password"
+                label="Hasło"
+                form={form}
+                validators={validators}
+                type="password"
+              />
+              <Input
+                id="rePassword"
+                label="Powtórz hasło"
+                form={form}
+                validators={validators}
+                type="password"
+              />
+              <Input
+                id="rePassword"
+                label="Powtórz hasło"
+                form={form}
+                validators={validators}
+                type="password"
+              />
+              <br />
+              <br />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+              >
+                Zarejestruj
+              </Button>
+            </form>
+            <LoginLinkContainer>
+              <Link to="/user/login" variant="body2" component={RouterLink} onClick={() => console.log('click')}>
+                Posiadasz konto? Zaloguj się!
+              </Link>
+            </LoginLinkContainer>
+          </Box>
+        </Paper>
       </Grid>
     </Grid>
   );

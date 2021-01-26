@@ -37,3 +37,9 @@ export const Spacer = styled(Toolbar)`
     display: none !important;
   }
 `;
+
+export const MobileSpacer = styled(Toolbar)`
+  @media (min-width: 961px) {
+    display: none !important;
+  }
+`;
