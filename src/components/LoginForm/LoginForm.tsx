@@ -1,6 +1,6 @@
 import React, { FormEvent } from 'react';
 import {
-  Avatar, Typography, Button, Link, Grid,
+  Typography, Button, Link, Grid,
 } from '@material-ui/core';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import { Link as RouterLink } from 'react-router-dom';
@@ -9,7 +9,7 @@ import useForm from '../../hooks/useForm/useForm';
 import { password, required } from '../../validators/Validators';
 import Input, { IValidator } from '../Input/Input';
 
-import { RegisterLinkContainer, FormContainer } from './LoginForm.styles';
+import { RegisterLinkContainer, FormContainer, Avatar } from './LoginForm.styles';
 
 const formInitialValues = {
   login: 'pkajka',
@@ -26,12 +26,13 @@ const LoginForm = () => {
 
     const values = form.getFormValues();
 
+    // TODO: request to BE and set Token
     console.log(values);
   };
 
   const validators: { [name: string]: IValidator } = {
     login: form.validate([required], 'login'),
-    password: form.validate([password], 'password'),
+    password: form.validate([password, required], 'password'),
   };
 
   return (
@@ -43,7 +44,7 @@ const LoginForm = () => {
           </Avatar>
         </Grid>
         <Typography component="h1" variant="h5">
-          Sign in
+          Logowanie
         </Typography>
         <form noValidate onSubmit={handleSubmit}>
           <Input

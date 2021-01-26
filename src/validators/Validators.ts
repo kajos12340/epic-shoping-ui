@@ -17,8 +17,8 @@ export const number: IValidator = (value) => {
 };
 
 export const password: IValidator = (value) => {
-  if (!value) {
-    return 'Podane hasło nie spełnia wymagań!';
+  if (value && value.toString().length < 8) {
+    return 'Hasło musi mieć minimum 8 znaków!';
   }
   return '';
 };

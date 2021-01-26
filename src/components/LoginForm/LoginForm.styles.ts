@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
+import AvatarDefault from '@material-ui/core/Avatar';
 
-// eslint-disable-next-line import/prefer-default-export
 export const RegisterLinkContainer = styled.div`
   margin-top: 5px;
   display: flex;
@@ -10,4 +10,10 @@ export const RegisterLinkContainer = styled.div`
 
 export const FormContainer = styled(Grid)`
   height: 100%;
+`;
+
+export const Avatar = styled(AvatarDefault)`
+  width: 60px !important;
+  height: 60px !important;
+  background: #00796b !important;
 `;
