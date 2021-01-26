@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import AvatarDefault from '@material-ui/core/Avatar';
 
-export const RegisterLinkContainer = styled.div`
+export const LoginLinkContainer = styled.div`
   margin-top: 5px;
   display: flex;
   justify-content: flex-end;

@@ -1,9 +1,8 @@
 import React from 'react';
+import RegisterForm from '../components/RegisterForm/RegisterForm';
 
 const Register = () => (
-  <div>
-    Register
-  </div>
+  <RegisterForm />
 );
 
 export default Register;

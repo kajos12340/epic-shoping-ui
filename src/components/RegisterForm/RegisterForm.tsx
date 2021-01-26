@@ -6,18 +6,15 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import { Link as RouterLink } from 'react-router-dom';
 
 import useForm from '../../hooks/useForm/useForm';
-import { password, required } from '../../validators/Validators';
+import {
+  password, required, email, sameAs,
+} from '../../validators/Validators';
 import Input, { IValidator } from '../Input/Input';
 
-import { RegisterLinkContainer, Avatar } from './LoginForm.styles';
+import { LoginLinkContainer, Avatar } from './RegisterForm.styles';
 
-const formInitialValues = {
-  login: 'pkajka',
-  password: 'test1234',
-};
-
-const LoginForm = () => {
-  const form = useForm(formInitialValues);
+const RegisterForm = () => {
+  const form = useForm();
 
   const handleSubmit = (e: FormEvent) => {
     const formValues = form.submit(e, validators);
@@ -26,13 +23,15 @@ const LoginForm = () => {
 
     const values = form.getFormValues();
 
-    // TODO: request to BE and set Token and message!
+    // TODO: request to BE and redirect to Login And message!
     console.log(values);
   };
 
   const validators: { [name: string]: IValidator } = {
+    email: form.validate([required, email], 'email'),
     login: form.validate([required], 'login'),
     password: form.validate([password, required], 'password'),
+    rePassword: form.validate([required, password, sameAs('password')], 'rePassword'),
   };
 
   return (
@@ -44,7 +43,7 @@ const LoginForm = () => {
           </Avatar>
         </Grid>
         <Typography component="h1" variant="h5">
-          Logowanie
+          Rejestracja
         </Typography>
         <form noValidate onSubmit={handleSubmit}>
           <Input
@@ -55,8 +54,21 @@ const LoginForm = () => {
             autoFocus
           />
           <Input
+            id="email"
+            label="Adres email"
+            form={form}
+            validators={validators}
+          />
+          <Input
             id="password"
             label="Hasło"
+            form={form}
+            validators={validators}
+            type="password"
+          />
+          <Input
+            id="rePassword"
+            label="Powtórz hasło"
             form={form}
             validators={validators}
             type="password"
@@ -69,17 +81,17 @@ const LoginForm = () => {
             variant="contained"
             color="primary"
           >
-            Zaloguj
+            Zarejestruj
           </Button>
-          <RegisterLinkContainer>
-            <Link to="/user/register" variant="body2" component={RouterLink}>
-              Nie posiadasz konta? Zarejestruj się!
+          <LoginLinkContainer>
+            <Link to="/user/login" variant="body2" component={RouterLink}>
+              Posiadasz konto? Zaloguj się!
             </Link>
-          </RegisterLinkContainer>
+          </LoginLinkContainer>
         </form>
       </Grid>
     </Grid>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

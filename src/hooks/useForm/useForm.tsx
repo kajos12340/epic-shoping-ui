@@ -10,7 +10,7 @@ interface IFormDataItem {
   checked: boolean,
 }
 
-type IFormData = {
+export type IFormData = {
   [name: string]: IFormDataItem
 }
 
@@ -73,7 +73,7 @@ const UseForm = (initialValues?: IInitialValues): IForm => {
 
   const validate = (validators: Function[], name: string): IValidator => () => {
     const validationResult = validators
-      .map((validator) => validator(formData[name]?.value))
+      .map((validator) => validator(formData[name]?.value, formData))
       .find((i) => i);
     setFormData((prev) => ({
       ...prev,
