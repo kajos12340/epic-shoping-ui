@@ -20,8 +20,10 @@ export interface IForm {
   getValue(name: string): string | boolean,
   hasAnyError(): boolean,
   getFormValues(): IFormData,
+  getFlatFormValues(): { [name: string]: string | boolean }
   getValidationResult(name: string): string,
-  submit: (e: FormEvent, validators: { [name: string]: IValidator }) => boolean | IFormData,
+  submit: (e: FormEvent, validators: { [name: string]: IValidator }) =>
+    null | { [name: string]: string | boolean },
 }
 
 interface IInitialValues {
@@ -96,19 +98,25 @@ const UseForm = (initialValues?: IInitialValues): IForm => {
 
   const getFormValues = () => formData;
 
+  const getFlatFormValues = () => Object.entries(formData).reduce((acc, [key, value]) => ({
+    ...acc,
+    [key]: value.value,
+  }), {});
+
   const submit = (e: FormEvent, validators: { [name: string]: IValidator }) => {
     e.preventDefault();
     Object.values(validators).forEach((validator) => {
       validator(null);
     });
     if (hasAnyError()) {
-      return false;
+      return null;
     }
 
-    return getFormValues();
+    return getFlatFormValues();
   };
 
   return {
+    getFlatFormValues,
     onChange,
     validate,
     getValue,

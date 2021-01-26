@@ -1,33 +1,57 @@
 import React, { FormEvent, useState } from 'react';
 import {
-  Typography, Button, Link, Grid, CircularProgress, Box, Paper,
+  Typography, Button, Link, Grid, Box, Paper,
 } from '@material-ui/core';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import { Link as RouterLink } from 'react-router-dom';
+import axios from 'axios';
+import { useSnackbar } from 'notistack';
 
+import { useDispatch } from 'react-redux';
 import useForm from '../../hooks/useForm/useForm';
 import { required } from '../../validators/Validators';
 import Input, { IValidator } from '../Input/Input';
 import Loader from '../Loader/Loader';
+import { setUser } from '../../store/user/actions';
+import { login } from '../../utils/auth/auth';
 
 import { RegisterLinkContainer, Avatar } from './LoginForm.styles';
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
-
   const form = useForm();
+  const { enqueueSnackbar } = useSnackbar();
 
-  const handleSubmit = (e: FormEvent) => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (e: FormEvent) => {
     setLoading(true);
-    const formValues = form.submit(e, validators);
+    const values = form.submit(e, validators);
 
-    if (!formValues) return;
+    if (!values) return;
 
-    const values = form.getFormValues();
+    try {
+      const { data } = await axios.post('/auth/login', {
+        login: values.login,
+        password: values.password,
+      });
 
-    // TODO: request to BE and set Token and message!
-    setLoading(false);
-    console.log(values);
+      dispatch(setUser({
+        login: data.login,
+        email: data.email,
+        id: data.id,
+      }));
+      login(data.token);
+      enqueueSnackbar('Zalogowano!', {
+        variant: 'success',
+      });
+    } catch (err) {
+      enqueueSnackbar('Nieporawne dane logowania!', {
+        variant: 'error',
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const validators: { [name: string]: IValidator } = {
