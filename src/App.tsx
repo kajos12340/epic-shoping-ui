@@ -17,13 +17,11 @@ const App = () => (
       <header>
         <Navigation />
       </header>
-      <main>
+      <Box py={2} height="100%" component="main">
         <Container fixed>
-          <Box my={2}>
-            <Router />
-          </Box>
+          <Router />
         </Container>
-      </main>
+      </Box>
     </BrowserRouter>
   </ThemeProvider>
 );
