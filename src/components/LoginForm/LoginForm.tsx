@@ -1,6 +1,6 @@
-import React, { FormEvent } from 'react';
+import React, { FormEvent, useState } from 'react';
 import {
-  Typography, Button, Link, Grid,
+  Typography, Button, Link, Grid, CircularProgress,
 } from '@material-ui/core';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import { Link as RouterLink } from 'react-router-dom';
@@ -8,13 +8,17 @@ import { Link as RouterLink } from 'react-router-dom';
 import useForm from '../../hooks/useForm/useForm';
 import { password, required } from '../../validators/Validators';
 import Input, { IValidator } from '../Input/Input';
+import Loader from '../Loader/Loader';
 
 import { RegisterLinkContainer, Avatar } from './LoginForm.styles';
 
 const LoginForm = () => {
+  const [loading, setLoading] = useState(false);
+
   const form = useForm();
 
   const handleSubmit = (e: FormEvent) => {
+    setLoading(true);
     const formValues = form.submit(e, validators);
 
     if (!formValues) return;
@@ -22,6 +26,7 @@ const LoginForm = () => {
     const values = form.getFormValues();
 
     // TODO: request to BE and set Token and message!
+    setLoading(false);
     console.log(values);
   };
 
@@ -32,6 +37,8 @@ const LoginForm = () => {
 
   return (
     <Grid container justify="center">
+      <Loader visible={loading} />
+      <button type="button" onClick={() => setLoading((p) => !p)}>hehehe</button>
       <Grid md={12} lg={5}>
         <Grid container justify="center">
           <Avatar>
