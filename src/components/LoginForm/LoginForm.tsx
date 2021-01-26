@@ -11,13 +11,8 @@ import Input, { IValidator } from '../Input/Input';
 
 import { RegisterLinkContainer, Avatar } from './LoginForm.styles';
 
-const formInitialValues = {
-  login: 'pkajka',
-  password: 'test1234',
-};
-
 const LoginForm = () => {
-  const form = useForm(formInitialValues);
+  const form = useForm();
 
   const handleSubmit = (e: FormEvent) => {
     const formValues = form.submit(e, validators);
@@ -52,7 +47,6 @@ const LoginForm = () => {
             label="Login"
             form={form}
             validators={validators}
-            autoFocus
           />
           <Input
             id="password"
@@ -71,12 +65,12 @@ const LoginForm = () => {
           >
             Zaloguj
           </Button>
-          <RegisterLinkContainer>
-            <Link to="/user/register" variant="body2" component={RouterLink}>
-              Nie posiadasz konta? Zarejestruj się!
-            </Link>
-          </RegisterLinkContainer>
         </form>
+        <RegisterLinkContainer>
+          <Link to="/user/register" variant="body2" component={RouterLink}>
+            Nie posiadasz konta? Zarejestruj się!
+          </Link>
+        </RegisterLinkContainer>
       </Grid>
     </Grid>
   );

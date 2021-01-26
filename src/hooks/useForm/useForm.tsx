@@ -71,7 +71,7 @@ const UseForm = (initialValues?: IInitialValues): IForm => {
     }));
   };
 
-  const validate = (validators: Function[], name: string): IValidator => () => {
+  const validate = (validators: Function[], name: string): IValidator => (e) => {
     const validationResult = validators
       .map((validator) => validator(formData[name]?.value, formData))
       .find((i) => i);

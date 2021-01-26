@@ -51,7 +51,6 @@ const RegisterForm = () => {
             label="Login"
             form={form}
             validators={validators}
-            autoFocus
           />
           <Input
             id="email"
@@ -83,12 +82,12 @@ const RegisterForm = () => {
           >
             Zarejestruj
           </Button>
-          <LoginLinkContainer>
-            <Link to="/user/login" variant="body2" component={RouterLink}>
-              Posiadasz konto? Zaloguj się!
-            </Link>
-          </LoginLinkContainer>
         </form>
+        <LoginLinkContainer>
+          <Link to="/user/login" variant="body2" component={RouterLink} onClick={() => console.log('click')}>
+            Posiadasz konto? Zaloguj się!
+          </Link>
+        </LoginLinkContainer>
       </Grid>
     </Grid>
   );
