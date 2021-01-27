@@ -1,9 +1,9 @@
 import React from 'react';
 
+import Lists from '../components/Lists/Lists';
+
 const ShoppingLists = () => (
-  <div>
-    Lists
-  </div>
+  <Lists />
 );
 
 export default ShoppingLists;
