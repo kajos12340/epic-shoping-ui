@@ -20,7 +20,7 @@ export interface IForm {
   getValue(name: string): string | boolean,
   hasAnyError(): boolean,
   getFormValues(): IFormData,
-  getFlatFormValues(): { [name: string]: string | boolean }
+  getFlatFormValues(): { [name: string]: string | boolean } | null,
   getValidationResult(name: string): string,
   submit: (e: FormEvent, validators: { [name: string]: IValidator }) =>
     null | { [name: string]: string | boolean },
@@ -84,6 +84,7 @@ const UseForm = (initialValues?: IInitialValues): IForm => {
         error: validationResult,
       },
     }));
+    return validationResult;
   };
 
   const getValidationResult = (name: string): string => (
@@ -98,17 +99,25 @@ const UseForm = (initialValues?: IInitialValues): IForm => {
 
   const getFormValues = () => formData;
 
-  const getFlatFormValues = () => Object.entries(formData).reduce((acc, [key, value]) => ({
-    ...acc,
-    [key]: value.value,
-  }), {});
+  const getFlatFormValues = () => {
+    const result = Object.entries(formData).reduce((acc, [key, value]) => ({
+      ...acc,
+      [key]: value.value,
+    }), {});
 
-  const submit = (e: FormEvent, validators: { [name: string]: IValidator }) => {
+    if (!Object.entries(result).length) return null;
+
+    return result;
+  };
+
+  const submit = (e: FormEvent, validators: { [name: string]: Function }) => {
     e.preventDefault();
-    Object.values(validators).forEach((validator) => {
-      validator(null);
+
+    let hasError = false;
+    Object.entries(validators).forEach(([name, validator]) => {
+      hasError = !!validator(formData[name]?.value, formData) || hasError;
     });
-    if (hasAnyError()) {
+    if (hasError) {
       return null;
     }
 

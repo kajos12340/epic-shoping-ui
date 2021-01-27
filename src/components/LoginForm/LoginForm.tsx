@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useMemo, useState } from 'react';
 import {
   Typography, Button, Link, Grid, Box, Paper,
 } from '@material-ui/core';
@@ -29,9 +29,11 @@ const LoginForm = () => {
     setLoading(true);
     const values = form.submit(e, validators);
 
-    if (!values) return;
-
     try {
+      if (!values) {
+        return;
+      }
+
       const { data } = await axios.post('/auth/login', {
         login: values.login,
         password: values.password,
@@ -56,10 +58,10 @@ const LoginForm = () => {
     }
   };
 
-  const validators: { [name: string]: IValidator } = {
+  const validators: { [name: string]: IValidator } = useMemo(() => ({
     login: form.validate([required], 'login'),
     password: form.validate([required], 'password'),
-  };
+  }), [form]);
 
   return (
     <Grid container justify="center">

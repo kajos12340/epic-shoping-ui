@@ -1,10 +1,11 @@
 import React from 'react';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import Typography from '@material-ui/core/Typography';
+import { useHistory } from 'react-router-dom';
 
 import { Button } from '@material-ui/core';
 import {
-  Container, Icon, Date, Title, Navigation, ListState,
+  Container, Icon, Date, Title, Navigation, ListInactive,
 } from './SimpleList.styles';
 
 export interface ISimpleListItem {
@@ -16,31 +17,45 @@ export interface ISimpleListItem {
 }
 
 const SimpleList = ({
-  name, date, isActive, productsNumber,
-}: ISimpleListItem) => (
-  <Container>
-    <Icon>
-      <ShoppingCartOutlinedIcon />
-    </Icon>
-    <Date>
-      {date}
-    </Date>
-    <Title>
-      <Typography variant="h6">{name}</Typography>
-      <Typography variant="subtitle2">{`${productsNumber} produktów na liście`}</Typography>
-    </Title>
-    <Navigation>
-      <ListState isActive={isActive}>
-        {isActive ? 'Lista aktywna' : 'Lista zakończona'}
-      </ListState>
-      <Button
-        variant="contained"
-        color={isActive ? 'secondary' : 'inherit'}
-      >
-        {isActive ? 'Przejdź do listy' : 'Szczegóły'}
-      </Button>
-    </Navigation>
-  </Container>
-);
+  name, date, isActive, productsNumber, id,
+}: ISimpleListItem) => {
+  const history = useHistory();
+
+  const handleListRedirect = () => {
+    history.push(`/shopping/list/${id}`);
+  };
+
+  return (
+    <Container>
+      <Icon>
+        <ShoppingCartOutlinedIcon />
+      </Icon>
+      <Date>
+        {date}
+      </Date>
+      <Title>
+        <Typography variant="h6" style={{ wordBreak: 'break-word' }}>{name}</Typography>
+        <Typography variant="subtitle2">{`${productsNumber} produktów na liście`}</Typography>
+      </Title>
+      <Navigation>
+        {isActive
+          ? (
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handleListRedirect}
+            >
+              {isActive ? 'Przejdź do listy' : 'Szczegóły'}
+            </Button>
+          )
+          : (
+            <ListInactive>
+              Lista nieaktywna
+            </ListInactive>
+          )}
+      </Navigation>
+    </Container>
+  );
+};
 
 export default SimpleList;

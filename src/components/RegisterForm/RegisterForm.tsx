@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useMemo, useState } from 'react';
 import {
   Typography, Button, Link, Grid, Paper, Box,
 } from '@material-ui/core';
@@ -26,9 +26,11 @@ const RegisterForm = () => {
     setLoading(true);
     const values = form.submit(e, validators);
 
-    if (!values) return;
-
     try {
+      if (!values) {
+        return;
+      }
+
       await axios.post('/auth/register', {
         login: values.login,
         password: values.password,
@@ -42,7 +44,7 @@ const RegisterForm = () => {
       history.push('/user/login');
     } catch (err) {
       let message = 'Nieporawne dane rejestracji!';
-      if (err.response.status === 409) {
+      if (err.response?.status === 409) {
         message = 'Użytkownik z podanym adresem email lub loginem już istnieje.';
       }
       enqueueSnackbar(message, {
@@ -113,7 +115,7 @@ const RegisterForm = () => {
               </Button>
             </form>
             <LoginLinkContainer>
-              <Link to="/user/login" variant="body2" component={RouterLink} onClick={() => console.log('click')}>
+              <Link to="/user/login" variant="body2" component={RouterLink}>
                 Posiadasz konto? Zaloguj się!
               </Link>
             </LoginLinkContainer>

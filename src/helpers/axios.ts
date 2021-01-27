@@ -5,6 +5,5 @@ export const setupAxiosBaseUrl = (url: string = '') => {
 };
 
 export const setToken = (token: string | null) => {
-  console.log('tokesetTokenn', token);
   axios.defaults.headers.Authorization = `Bearer ${token}`;
 };

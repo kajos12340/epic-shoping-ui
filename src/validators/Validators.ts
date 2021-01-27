@@ -26,8 +26,8 @@ export const password: IValidator = (value) => {
 };
 
 export const email: IValidator = (value) => {
-  // Just for the most obvious syntax
-  if (value && !/^\w+@\w+\.\w+$/.test(value.toString())) {
+  // Significantly simplified
+  if (value && !/^\S+@\S+/.test(value.toString())) {
     return 'Proszę podać prawiłowy adres email!';
   }
   return '';

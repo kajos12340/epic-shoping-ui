@@ -5,8 +5,8 @@ export const Container = styled.section`
   
   display: grid;
   grid-template: "logo date" auto
-                 "logo title" 50px
-                 "navigation navigation" auto
+                 "logo title" 4rem
+                 "navigation navigation" 3em
                  / auto 1fr;
   grid-column-gap: 20px;
 `;
@@ -44,11 +44,11 @@ export const Navigation = styled.div`
   padding-top: 10px;
   grid-area: navigation;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 `;
 
-export const ListState = styled.span<{ isActive: boolean }>`
+export const ListInactive = styled.span`
   font-weight: 500;
-  color: ${({ isActive }) => (isActive ? 'green' : 'red')}
+  color: red;
 `;
