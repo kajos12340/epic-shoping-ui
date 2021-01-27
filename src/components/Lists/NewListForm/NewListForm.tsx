@@ -11,13 +11,9 @@ import Loader from '../../Loader/Loader';
 
 import { ButtonContainer } from './NewListForm.styles';
 
-const defaultValues = {
-  date: moment().format('YYYY-MM-DD'),
-};
-
 const NewListForm = () => {
   const [loading, setLoading] = useState(false);
-  const form = useForm(defaultValues);
+  const form = useForm();
   const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (e: FormEvent) => {
@@ -49,7 +45,6 @@ const NewListForm = () => {
 
   const validators: { [name: string]: IValidator } = {
     name: form.validate([required], 'name'),
-    date: form.validate([required], 'password'),
   };
 
   return (
@@ -59,13 +54,6 @@ const NewListForm = () => {
         <Input
           id="name"
           label="Nazwa"
-          form={form}
-          validators={validators}
-        />
-        <Input
-          id="date"
-          label="Data"
-          type="date"
           form={form}
           validators={validators}
         />

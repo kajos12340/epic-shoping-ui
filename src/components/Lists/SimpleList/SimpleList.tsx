@@ -14,10 +14,11 @@ export interface ISimpleListItem {
   isActive: boolean,
   productsNumber: number,
   id: string,
+  author: string,
 }
 
 const SimpleList = ({
-  name, date, isActive, productsNumber, id,
+  name, date, isActive, productsNumber, id, author,
 }: ISimpleListItem) => {
   const history = useHistory();
 
@@ -31,7 +32,7 @@ const SimpleList = ({
         <ShoppingCartOutlinedIcon />
       </Icon>
       <Date>
-        {date}
+        {`${date} - ${author}`}
       </Date>
       <Title>
         <Typography variant="h6" style={{ wordBreak: 'break-word' }}>{name}</Typography>

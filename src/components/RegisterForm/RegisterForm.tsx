@@ -38,7 +38,7 @@ const RegisterForm = () => {
         email: values.email,
       });
 
-      enqueueSnackbar('Zarejestrowano! Możesz się zalogować', {
+      enqueueSnackbar('Zarejestrowano! Poczekaj aż konto zostanie potwierdzone przez administratora i spróbuj się zalogować.', {
         variant: 'success',
       });
       history.push('/user/login');
