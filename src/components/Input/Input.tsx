@@ -16,10 +16,11 @@ interface IInputProps {
   },
   autoFocus?: boolean,
   type?: string,
+  defaultValue?: string,
 }
 
 const Input = ({
-  label, id, form, validators, autoFocus = false, type = 'text',
+  label, id, form, validators, autoFocus = false, type = 'text', defaultValue,
 }: IInputProps) => (
   <TextField
     variant="outlined"
@@ -36,6 +37,10 @@ const Input = ({
     error={!!form.getValidationResult(id)}
     helperText={form.getValidationResult(id)}
     type={type}
+    InputLabelProps={type === 'date' ? {
+      shrink: true,
+    } : undefined}
+    defaultValue={defaultValue}
   />
 );
 
