@@ -7,6 +7,7 @@ import user from './user/reducer';
 const rootReducer = combineReducers({
   user,
 });
+export type RootReducerState = ReturnType<typeof rootReducer>;
 
 const middlewares = applyMiddleware(thunkMiddleware);
 const enchancers = composeWithDevTools(middlewares);

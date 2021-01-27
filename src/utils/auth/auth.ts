@@ -1,4 +1,4 @@
-import { setToken as setAxiosToken } from '../../helpers/axios';
+import { setToken as setAxiosToken } from '../axios/axios';
 
 export const login = (token: string) => {
   localStorage.setItem('token', token);

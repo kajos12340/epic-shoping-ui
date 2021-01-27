@@ -1,9 +1,13 @@
 import React from 'react';
 
-const User = () => (
-  <div>
-    User
-  </div>
-);
+import UserActions from '../components/UserActions/UserActions';
+import useAuthorize from '../hooks/useAuthorize/useAuthorize';
+
+const User = () => {
+  useAuthorize();
+  return (
+    <UserActions />
+  );
+};
 
 export default User;
