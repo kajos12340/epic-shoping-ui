@@ -9,6 +9,10 @@ export const Container = styled.section`
   
   @media (max-width: 960px) {
     flex-direction: row;
+    
+    & > div {
+      margin-right: 10px;
+    }
   }
 `;
 
