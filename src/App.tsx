@@ -1,17 +1,18 @@
-import React, { RefObject, useRef } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import React, { RefObject, useEffect, useRef } from 'react';
+import { BrowserRouter, useHistory } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import { IconButton, ThemeProvider } from '@material-ui/core';
-import { Provider } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { SnackbarProvider } from 'notistack';
 import CloseIcon from '@material-ui/icons/Close';
+import axios from 'axios';
 
-import { setupAxiosBaseUrl } from './utils/axios/axios';
+import { setupAxiosBaseUrl, setToken } from './utils/axios/axios';
 import Router from './Router/Router';
 import Navigation from './components/Navigation/Navigation';
 import theme from './Theme/Theme';
-import store from './store/store';
+import { setUser } from './store/user/actions';
 
 import { MobileSpacer } from './components/Navigation/Menu/Menu.styles';
 
@@ -19,37 +20,58 @@ setupAxiosBaseUrl(process.env.REACT_APP_BE_ADDRESS);
 
 const App = () => {
   const snackbarsRef = useRef<SnackbarProvider>() as RefObject<SnackbarProvider>;
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const onDismissClick = (key: any) => () => {
     // @ts-ignore
     snackbarsRef.current?.closeSnackbar(key);
   };
 
+  useEffect(() => {
+    (async () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        setToken(token);
+        try {
+          const { data } = await axios.get('/auth/get-user-data');
+          dispatch(setUser({
+            login: data.login,
+            email: data.email,
+            id: data.id,
+          }));
+        } catch (e) {
+          history.push('/user/login');
+          setToken(null);
+        }
+      }
+    })();
+  }, [dispatch, history]);
+
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <SnackbarProvider
-          maxSnack={3}
-          ref={snackbarsRef}
-          action={(key) => (
-            <IconButton onClick={onDismissClick(key)} color="inherit">
-              <CloseIcon />
-            </IconButton>
-          )}
-        >
-          <BrowserRouter>
-            <header>
-              <Navigation />
-            </header>
-            <Box py={2} height="100%" component="main">
-              <Container fixed>
-                <Router />
-              </Container>
-            </Box>
-          </BrowserRouter>
-          <MobileSpacer />
-        </SnackbarProvider>
-      </ThemeProvider>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <SnackbarProvider
+        maxSnack={3}
+        ref={snackbarsRef}
+        action={(key) => (
+          <IconButton onClick={onDismissClick(key)} color="inherit">
+            <CloseIcon />
+          </IconButton>
+        )}
+      >
+        <BrowserRouter>
+          <header>
+            <Navigation />
+          </header>
+          <Box py={2} height="100%" component="main">
+            <Container fixed>
+              <Router />
+            </Container>
+          </Box>
+        </BrowserRouter>
+        <MobileSpacer />
+      </SnackbarProvider>
+    </ThemeProvider>
   );
 };
 

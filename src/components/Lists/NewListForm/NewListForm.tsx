@@ -2,7 +2,6 @@ import React, { FormEvent, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import axios from 'axios';
 import { Button } from '@material-ui/core';
-import moment from 'moment';
 
 import useForm from '../../../hooks/useForm/useForm';
 import Input, { IValidator } from '../../Input/Input';

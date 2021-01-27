@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
@@ -11,13 +11,13 @@ const UseAuthorize = () => {
   const history = useHistory();
 
   useEffect(() => {
-    if (!user || !localStorage.getItem('token')) {
+    if (!user && !localStorage.getItem('token')) {
       enqueueSnackbar('Zaloguj się aby uzyskać dostęp do tej zakładki!', {
         variant: 'error',
       });
       history.push('/user/login');
     }
-  }, [user]);
+  }, [user, enqueueSnackbar]);
 
   return null;
 };
