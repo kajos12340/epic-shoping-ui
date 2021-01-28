@@ -48,7 +48,7 @@ const LoginForm = () => {
       enqueueSnackbar('Zalogowano!', {
         variant: 'success',
       });
-      history.push('/');
+      history.push('/shopping/lists');
     } catch (err) {
       enqueueSnackbar('Nieporawne dane logowania!', {
         variant: 'error',

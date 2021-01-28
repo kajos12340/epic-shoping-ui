@@ -12,7 +12,7 @@ import User from '../pages/User';
 const Router = () => (
   <Switch>
     <Route exact path="/">
-      <ShoppingLists />
+      <Login />
     </Route>
     <Route exact path="/user/login">
       <Login />
