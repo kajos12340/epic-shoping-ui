@@ -4,7 +4,7 @@ export const Form = styled.form`
   display: grid;
   grid-template: "name quantity unit buttons" auto / 50% 20% 20% 10%;
   grid-column-gap: 5px;
-  margin-bottom: 15px;
+  margin: 15px 0;
   
   & > div {
     height: 100%;

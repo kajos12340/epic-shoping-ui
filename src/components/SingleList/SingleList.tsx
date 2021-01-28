@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   Paper, List, Divider, Grid, Button,
@@ -9,6 +9,7 @@ import Item, { IItem } from './Item/Item';
 import NewItemForm from './NewItemForm/NewItemForm';
 
 import { ListContainer } from './SingleList.styles';
+import Dialog from '../Dialog/Dialog';
 
 const mockData: IItem[] = [
   {
@@ -44,7 +45,21 @@ const mockData: IItem[] = [
 ];
 
 const SingleList = () => {
+  const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
   const { id } = useParams<{ id: string }>();
+
+  const handleConfirmDialogOpen = useCallback(() => {
+    setConfirmDialogOpen(true);
+  }, []);
+
+  const handleConfirmDialogClose = useCallback(() => {
+    setConfirmDialogOpen(false);
+  }, []);
+
+  const handleListCancellation = useCallback(() => {
+    console.log('handleListCancellation', id);
+    setConfirmDialogOpen(false);
+  }, [id]);
 
   console.log(id);
   return (
@@ -59,19 +74,33 @@ const SingleList = () => {
         />
         <ListContainer>
           <List dense>
-            {mockData.map((item, idx) => (
+            {mockData.map((item) => (
               <>
                 <Item name={item.name} unit={item.unit} quantity={item.quantity} />
-                {idx < mockData.length - 1 && <Divider />}
+                <Divider />
               </>
             ))}
           </List>
           <NewItemForm />
           <Grid container justify="flex-end">
-            <Button variant="contained">Zakończ zakupy</Button>
+            <Button variant="contained" onClick={handleConfirmDialogOpen}>
+              Zakończ zakupy
+            </Button>
           </Grid>
         </ListContainer>
       </Paper>
+      <Dialog
+        open={confirmDialogOpen}
+        onClose={handleConfirmDialogClose}
+        title="Uwaga!"
+        confirmFooter
+        okCallback={handleListCancellation}
+        cancelCallback={handleConfirmDialogClose}
+      >
+        Jesteś pewien, że chcesz zamknąć listę?
+        Spowoduje to utratę możliwości wyświetlania
+        i modyfikacji jej danych dla Ciebie i wszystkich użytkowników.
+      </Dialog>
     </>
   );
 };

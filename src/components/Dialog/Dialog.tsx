@@ -1,8 +1,9 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, MouseEvent } from 'react';
 import DialogDefault from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CloseIcon from '@material-ui/icons/Close';
+import { DialogActions, Button } from '@material-ui/core';
 
 import { CloseButton } from './Dialog.styles';
 
@@ -11,10 +12,13 @@ interface IDialogProps {
   onClose(): any,
   title: string,
   children: ReactNode,
+  confirmFooter?: ReactNode,
+  okCallback?(): any,
+  cancelCallback?(): any,
 }
 
 const Dialog = ({
-  open, onClose, title, children,
+  open, onClose, title, children, confirmFooter, okCallback, cancelCallback,
 }: IDialogProps) => (
   <DialogDefault open={open} onClose={onClose} disableBackdropClick fullWidth maxWidth="sm">
     <DialogTitle>
@@ -26,6 +30,16 @@ const Dialog = ({
     <DialogContent>
       {children}
     </DialogContent>
+    {confirmFooter && (
+      <DialogActions>
+        <Button variant="contained" onClick={cancelCallback}>
+          Anuluj
+        </Button>
+        <Button variant="contained" onClick={okCallback} color="primary">
+          Ok
+        </Button>
+      </DialogActions>
+    )}
   </DialogDefault>
 );
 
