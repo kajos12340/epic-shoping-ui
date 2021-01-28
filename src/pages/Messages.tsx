@@ -1,14 +1,13 @@
 import React from 'react';
 
 import useAuthorize from '../hooks/useAuthorize/useAuthorize';
+import Communicator from '../components/Communicator/Communicator';
 
 const Messages = () => {
   useAuthorize();
 
   return (
-    <div>
-      Messages
-    </div>
+    <Communicator />
   );
 };
 
