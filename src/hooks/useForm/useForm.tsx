@@ -1,5 +1,5 @@
 import {
-  useState, ChangeEvent, FormEvent, useEffect,
+  useState, ChangeEvent, FormEvent, useEffect, ReactNode,
 } from 'react';
 
 import { IValidator } from '../../components/Input/Input';
@@ -16,6 +16,8 @@ export type IFormData = {
 
 export interface IForm {
   onChange(e: ChangeEvent<HTMLInputElement>): void,
+  onSelectChange(e: ChangeEvent<{ name?: string | undefined; value: unknown; }>, child: ReactNode):
+    void,
   validate(validators: Function[], name: string): IValidator,
   getValue(name: string): string | boolean,
   hasAnyError(): boolean,
@@ -56,6 +58,11 @@ const UseForm = (initialValues?: IInitialValues): IForm => {
       setFormData(parsedInitialValues);
     }
   }, [initialValues]);
+
+  const onSelectChange = (e: ChangeEvent<{ name?: string | undefined; value: unknown; }>,
+    child: ReactNode): void => {
+    onChange(e as ChangeEvent<HTMLInputElement>);
+  };
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target) return;
@@ -133,6 +140,7 @@ const UseForm = (initialValues?: IInitialValues): IForm => {
     getFormValues,
     getValidationResult,
     submit,
+    onSelectChange,
   };
 };
 

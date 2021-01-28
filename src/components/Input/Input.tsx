@@ -27,7 +27,7 @@ const Input = ({
 }: IInputProps) => {
   if (type === 'select') {
     return (
-      <FormControl variant="outlined" error={!!form.getValidationResult(id)}>
+      <FormControl variant="outlined" error={!!form.getValidationResult(id)} fullWidth>
         <InputLabel id={`select-label-${id}`}>{label}</InputLabel>
         <Select
           labelId={`select-label-${id}`}
@@ -41,6 +41,7 @@ const Input = ({
           autoComplete={id}
           autoFocus={autoFocus}
           error={!!form.getValidationResult(id)}
+          fullWidth
         >
           {children}
         </Select>
