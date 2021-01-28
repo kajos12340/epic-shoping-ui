@@ -1,13 +1,10 @@
 import React from 'react';
 
+import withAuthorize from '../hoc/withAuthorize';
 import UserActions from '../components/UserActions/UserActions';
-import useAuthorize from '../hooks/useAuthorize/useAuthorize';
 
-const User = () => {
-  useAuthorize();
-  return (
-    <UserActions />
-  );
-};
+const User = () => (
+  <UserActions />
+);
 
-export default User;
+export default withAuthorize(User);

@@ -1,14 +1,10 @@
 import React from 'react';
 
+import withAuthorize from '../hoc/withAuthorize';
 import Lists from '../components/Lists/Lists';
-import useAuthorize from '../hooks/useAuthorize/useAuthorize';
 
-const ShoppingLists = () => {
-  useAuthorize();
+const ShoppingLists = () => (
+  <Lists />
+);
 
-  return (
-    <Lists />
-  );
-};
-
-export default ShoppingLists;
+export default withAuthorize(ShoppingLists);

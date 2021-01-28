@@ -3,11 +3,14 @@ import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import user from './user/reducer';
+import { IUser } from './user/types';
 
 const rootReducer = combineReducers({
   user,
 });
-export type RootReducerState = ReturnType<typeof rootReducer>;
+export interface RootReducerState {
+  user: IUser,
+}
 
 const middlewares = applyMiddleware(thunkMiddleware);
 const enchancers = composeWithDevTools(middlewares);

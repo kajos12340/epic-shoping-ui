@@ -11,8 +11,8 @@ export const Container = styled.div<{ isOwn: boolean }>`
   margin-bottom: 15px;
 `;
 
-export const Content = styled.div`
-  border: solid 2px #00796b;
+export const Content = styled.div<{ bgColor: string }>`
+  border: solid 2px ${({ bgColor }) => bgColor};
   border-radius: 10px;
   display: grid;
   padding: 10px;
@@ -29,7 +29,7 @@ export const OwnContent = styled(Content)`
                  / 1fr auto;
 `;
 
-export const Icon = styled.div`
+export const Icon = styled.div<{ bgColor: string }>`
   grid-area: icon;
   display: flex;
   justify-content: center;
@@ -37,7 +37,7 @@ export const Icon = styled.div`
   
   height: 50px;
   width: 50px;
-  background-color: #00796b;
+  background-color: ${({ bgColor }) => bgColor};
   border-radius: 100%;
   
   color: white;

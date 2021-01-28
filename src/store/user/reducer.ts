@@ -1,7 +1,7 @@
 import { SET_USER, CLEAR_USER } from './actions';
-import { ActionType } from './types';
+import { ActionType, IUser } from './types';
 
-const initialState = null;
+const initialState: IUser | null = null;
 
 const reducer = (state = initialState, action: ActionType) => {
   switch (action.type) {

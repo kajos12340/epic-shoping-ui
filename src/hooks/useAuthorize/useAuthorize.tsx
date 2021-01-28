@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
@@ -6,6 +6,7 @@ import { useSnackbar } from 'notistack';
 import { RootReducerState } from '../../store/store';
 
 const UseAuthorize = () => {
+  const [hasAccess, setHasAccess] = useState(false);
   const user = useSelector((state: RootReducerState) => state.user);
   const { enqueueSnackbar } = useSnackbar();
   const history = useHistory();
@@ -16,10 +17,12 @@ const UseAuthorize = () => {
         variant: 'error',
       });
       history.push('/user/login');
+    } else {
+      setHasAccess(true);
     }
   }, [user, enqueueSnackbar]);
 
-  return null;
+  return hasAccess;
 };
 
 export default UseAuthorize;

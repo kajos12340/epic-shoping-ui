@@ -1,5 +1,5 @@
 import React, { RefObject, useEffect, useRef } from 'react';
-import { BrowserRouter, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Container, IconButton, ThemeProvider } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { SnackbarProvider } from 'notistack';
@@ -39,7 +39,7 @@ const App = () => {
             id: data.id,
           }));
         } catch (e) {
-          history.push('/user/login');
+          history?.push('/user/login');
           setToken(null);
         }
       }
@@ -57,14 +57,12 @@ const App = () => {
           </IconButton>
         )}
       >
-        <BrowserRouter>
-          <Navigation />
-          <Main>
-            <Container fixed>
-              <Router />
-            </Container>
-          </Main>
-        </BrowserRouter>
+        <Navigation />
+        <Main>
+          <Container fixed>
+            <Router />
+          </Container>
+        </Main>
       </SnackbarProvider>
     </ThemeProvider>
   );

@@ -5,24 +5,32 @@ import {
 } from './Message.styles';
 
 export interface IMessage {
-  author: string,
-  isOwn: boolean,
+  author: {
+    login: string,
+    _id: string,
+    color: string,
+  },
+  isOwn?: boolean,
   text: string,
-  date: string
+  date: string,
+}
+
+interface IMessageProps extends IMessage{
+  isOwn: boolean,
 }
 
 const Message = ({
   author, isOwn, text, date,
-}: IMessage) => {
+}: IMessageProps) => {
   const ContentWrapper = isOwn ? OwnContent : Content;
 
   return (
     <Container isOwn={isOwn}>
-      <ContentWrapper>
-        <Icon>
-          {author[0]}
+      <ContentWrapper bgColor={`#${author.color}`}>
+        <Icon bgColor={`#${author.color}`}>
+          {author.login[0]}
         </Icon>
-        <Date>{`${author} - ${date}`}</Date>
+        <Date>{`${author.login} - ${date}`}</Date>
         <Text>{text}</Text>
       </ContentWrapper>
     </Container>

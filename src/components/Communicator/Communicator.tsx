@@ -1,89 +1,87 @@
 import React, {
-  ChangeEvent, useCallback, useEffect, useState,
+  ChangeEvent, useCallback, useEffect, useRef, useState,
 } from 'react';
 import {
   Box, Grid, TextField, IconButton,
 } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
+import moment from 'moment';
+
+import { useSelector } from 'react-redux';
+import Message, { IMessage } from './Message/Message';
+import useSocket from '../../hooks/useSocket/useSocket';
 
 import {
   Container, Input, Content, Messages,
 } from './Communicator.styles';
-import Message, { IMessage } from './Message/Message';
+import Loader from '../Loader/Loader';
+import { RootReducerState } from '../../store/store';
 
-const messagesMock: IMessage[] = [
-  {
-    isOwn: false,
-    author: 'Maja',
-    date: '28.01.2021 18:40',
-    text: 'Hej, pamiętaj o bułkach, maśle, płatkach i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku, i mleku,! :)',
+interface IMessageFromBE {
+  author: {
+    login: string,
+    _id: string,
+    color: string,
   },
-  {
-    isOwn: false,
-    author: 'Maja',
-    date: '28.01.2021 18:41',
-    text: 'a i o Almette',
-  },
-  {
-    isOwn: true,
-    author: 'Piotrek',
-    date: '28.01.2021 18:43',
-    text: 'Oki, wszystko kupię',
-  },
-  {
-    isOwn: true,
-    author: 'Piotrek',
-    date: '28.01.2021 18:44',
-    text: 'Wziąłem też monte :D',
-  },
-  {
-    isOwn: false,
-    author: 'Maja',
-    date: '28.01.2021 18:45',
-    text: 'Mniam',
-  },
-  {
-    isOwn: false,
-    author: 'Maja',
-    date: '28.01.2021 18:46',
-    text: ':D',
-  },
-  {
-    isOwn: true,
-    author: 'Piotrek',
-    date: '28.01.2021 18:48',
-    text: 'Haha :D',
-  },
-];
+  date: Date,
+  text: string,
+}
 
 const Communicator = () => {
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [messages, setMessages] = useState<IMessage[]>([]);
+
+  const socket = useSocket();
+  const userId = useSelector((state: RootReducerState) => state.user?.id);
 
   const handleMessageChange = useCallback((e: ChangeEvent<HTMLInputElement>): void => {
     setMessage(e.target.value);
   }, []);
 
   const handleMessageSend = useCallback(() => {
-    console.log('sendMessage', message);
+    if (!message) return;
+
+    socket.current?.emit('newMessage', message);
     setMessage('');
-  }, [message]);
+  }, [message, socket]);
 
   useEffect(() => {
-    // @ts-ignore
-    document.getElementById('scrollAnchor').scrollIntoView();
-  }, []);
+    if (messages.length) {
+      // @ts-ignore
+      document.getElementById('scrollAnchor').scrollIntoView();
+    }
+  }, [messages]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      socket.current?.emit('getMessages', 1);
+      setLoading(false);
+    }, 500);
+
+    socket.current?.on('messagesList', (newMessages: IMessageFromBE[]) => {
+      const mapMessage = (newMessage: IMessageFromBE): IMessage => ({
+        author: newMessage.author,
+        date: moment(newMessage.date).format('HH:mm DD.MM.YYYY'),
+        text: newMessage.text,
+      });
+
+      setMessages(newMessages.map((messageFromBE) => mapMessage(messageFromBE)));
+    });
+  }, [socket]);
 
   return (
     <Grid container justify="center">
+      <Loader visible={loading} />
       <Grid xs={12} sm={10} md={8} lg={6} xl={5} justify="center">
         <Container>
           <Box p={2} height="100%" boxSizing="border-box">
             <Content>
               <Messages>
-                {messagesMock.map((item) => (
+                {messages.map((item) => (
                   <Message
                     author={item.author}
-                    isOwn={item.isOwn}
+                    isOwn={item.author._id === userId}
                     text={item.text}
                     date={item.date}
                     key={item.date}

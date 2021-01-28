@@ -1,14 +1,10 @@
 import React from 'react';
 
-import useAuthorize from '../hooks/useAuthorize/useAuthorize';
 import Communicator from '../components/Communicator/Communicator';
+import withAuthorize from '../hoc/withAuthorize';
 
-const Messages = () => {
-  useAuthorize();
+const Messages = () => (
+  <Communicator />
+);
 
-  return (
-    <Communicator />
-  );
-};
-
-export default Messages;
+export default withAuthorize(Messages);
