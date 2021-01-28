@@ -1,8 +1,6 @@
 import React, { RefObject, useEffect, useRef } from 'react';
 import { BrowserRouter, useHistory } from 'react-router-dom';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import { IconButton, ThemeProvider } from '@material-ui/core';
+import { Container, IconButton, ThemeProvider } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { SnackbarProvider } from 'notistack';
 import CloseIcon from '@material-ui/icons/Close';
@@ -14,7 +12,7 @@ import Navigation from './components/Navigation/Navigation';
 import theme from './Theme/Theme';
 import { setUser } from './store/user/actions';
 
-import { MobileSpacer } from './components/Navigation/Menu/Menu.styles';
+import { Main } from './App.styles';
 
 setupAxiosBaseUrl(process.env.REACT_APP_BE_ADDRESS);
 
@@ -60,16 +58,13 @@ const App = () => {
         )}
       >
         <BrowserRouter>
-          <header>
-            <Navigation />
-          </header>
-          <Box py={2} height="100%" component="main">
+          <Navigation />
+          <Main>
             <Container fixed>
               <Router />
             </Container>
-          </Box>
+          </Main>
         </BrowserRouter>
-        <MobileSpacer />
       </SnackbarProvider>
     </ThemeProvider>
   );

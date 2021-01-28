@@ -1,17 +1,13 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 
 import useAuthorize from '../hooks/useAuthorize/useAuthorize';
+import SingleList from '../components/SingleList/SingleList';
 
 const ShoppingList = () => {
   useAuthorize();
-  const { id } = useParams<{ id: string }>();
 
   return (
-    <div>
-      List
-      {` ${id}`}
-    </div>
+    <SingleList />
   );
 };
 

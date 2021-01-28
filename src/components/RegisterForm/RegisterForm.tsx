@@ -38,7 +38,7 @@ const RegisterForm = () => {
         email: values.email,
       });
 
-      enqueueSnackbar('Zarejestrowano! Do czasu aktywacji konta przez administratora uprawnienia będą ograniczone.', {
+      enqueueSnackbar('Zarejestrowano! Możesz się zalogować.', {
         variant: 'success',
       });
       history.push('/user/login');

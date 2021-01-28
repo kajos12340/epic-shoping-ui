@@ -18,3 +18,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root {
+  height: 100%;
+  display: grid;
+  grid-template: "header" auto
+                  "content" 1fr
+                  / 1fr;
+}
+
+@media (max-width: 960px) {
+  #root {
+    grid-template: "content" 1fr
+                  "header" auto
+                  / 1fr;
+  }
+}

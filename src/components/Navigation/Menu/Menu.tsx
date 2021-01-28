@@ -5,7 +5,7 @@ import { Typography, IconButton } from '@material-ui/core';
 import { IMenuOption } from '../Navigation';
 
 import {
-  Toolbar, ButtonsContainer, AppBar, Spacer,
+  Toolbar, ButtonsContainer, AppBar,
 } from './Menu.styles';
 
 interface ScreenMenuProps {
@@ -15,7 +15,7 @@ interface ScreenMenuProps {
 
 const Menu = ({ menuOptions, currentActiveTab }:ScreenMenuProps) => (
   <>
-    <AppBar>
+    <AppBar position="relative">
       <Toolbar>
         <Typography variant="h6" noWrap>
           Epic shopper
@@ -35,7 +35,6 @@ const Menu = ({ menuOptions, currentActiveTab }:ScreenMenuProps) => (
         </ButtonsContainer>
       </Toolbar>
     </AppBar>
-    <Spacer />
   </>
 );
 

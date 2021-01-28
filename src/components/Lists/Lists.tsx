@@ -52,12 +52,132 @@ const listsMock: ISimpleListItem[] = [
     id: 'asdasdasdas',
     author: 'Majak',
   },
+  {
+    productsNumber: 45,
+    date: '22.05.2020',
+    name: 'Sobotnie zakupy',
+    isActive: false,
+    id: 'asdasdasdas1',
+    author: 'Majak',
+  },
+  {
+    productsNumber: 5,
+    date: '24.05.2020',
+    name: 'Zapomniane rzeczy',
+    isActive: true,
+    id: 'asdasdasdas2',
+    author: 'Pioter',
+  },
+  {
+    productsNumber: 45,
+    date: '14.05.2020',
+    name: 'Niedzielne zakupy',
+    isActive: true,
+    id: 'asdasdasdas3',
+    author: 'Majak',
+  },
+  {
+    productsNumber: 45,
+    date: '02.05.2020',
+    name: 'Poniedziałkowe zakupy',
+    isActive: false,
+    id: 'asdasdasdas4',
+    author: 'Pioter',
+  },
+  {
+    productsNumber: 45,
+    date: '21.06.2020',
+    name: 'Sobotnie zakupy',
+    isActive: false,
+    id: 'asdasdasdas',
+    author: 'Majak',
+  },
+  {
+    productsNumber: 45,
+    date: '22.05.2020',
+    name: 'Sobotnie zakupy',
+    isActive: false,
+    id: 'asdasdasdas1',
+    author: 'Majak',
+  },
+  {
+    productsNumber: 5,
+    date: '24.05.2020',
+    name: 'Zapomniane rzeczy',
+    isActive: true,
+    id: 'asdasdasdas2',
+    author: 'Pioter',
+  },
+  {
+    productsNumber: 45,
+    date: '14.05.2020',
+    name: 'Niedzielne zakupy',
+    isActive: true,
+    id: 'asdasdasdas3',
+    author: 'Majak',
+  },
+  {
+    productsNumber: 45,
+    date: '02.05.2020',
+    name: 'Poniedziałkowe zakupy',
+    isActive: false,
+    id: 'asdasdasdas4',
+    author: 'Pioter',
+  },
+  {
+    productsNumber: 45,
+    date: '21.06.2020',
+    name: 'Sobotnie zakupy',
+    isActive: false,
+    id: 'asdasdasdas',
+    author: 'Majak',
+  },
+  {
+    productsNumber: 45,
+    date: '22.05.2020',
+    name: 'Sobotnie zakupy',
+    isActive: false,
+    id: 'asdasdasdas1',
+    author: 'Majak',
+  },
+  {
+    productsNumber: 5,
+    date: '24.05.2020',
+    name: 'Zapomniane rzeczy',
+    isActive: true,
+    id: 'asdasdasdas2',
+    author: 'Pioter',
+  },
+  {
+    productsNumber: 45,
+    date: '14.05.2020',
+    name: 'Niedzielne zakupy',
+    isActive: true,
+    id: 'asdasdasdas3',
+    author: 'Majak',
+  },
+  {
+    productsNumber: 45,
+    date: '02.05.2020',
+    name: 'Poniedziałkowe zakupy',
+    isActive: false,
+    id: 'asdasdasdas4',
+    author: 'Pioter',
+  },
+  {
+    productsNumber: 45,
+    date: '21.06.2020',
+    name: 'Sobotnie zakupy',
+    isActive: false,
+    id: 'asdasdasdas',
+    author: 'Majak',
+  },
 ];
 
 const Lists = () => {
   const [newListDialogOpen, setNewListDialogOpen] = useState(false);
   const [filterActive, setFilterActive] = useState(true);
-  const [filterInActive, setFilterInActive] = useState(true);
+  const [filterInActive, setFilterInActive] = useState(false);
   const [filteredData, setFilteredData] = useState<ISimpleListItem[]>([]);
 
   useEffect(() => {
