@@ -1,4 +1,6 @@
-import React, { ChangeEvent, useCallback, useState } from 'react';
+import React, {
+  ChangeEvent, useCallback, useEffect, useState,
+} from 'react';
 import {
   Box, Grid, TextField, IconButton,
 } from '@material-ui/core';
@@ -66,6 +68,11 @@ const Communicator = () => {
     setMessage('');
   }, [message]);
 
+  useEffect(() => {
+    // @ts-ignore
+    document.getElementById('scrollAnchor').scrollIntoView();
+  }, []);
+
   return (
     <Grid container justify="center">
       <Grid xs={12} sm={10} md={8} lg={6} xl={5} justify="center">
@@ -82,6 +89,7 @@ const Communicator = () => {
                     key={item.date}
                   />
                 ))}
+                <div id="scrollAnchor" />
               </Messages>
               <Input>
                 <TextField

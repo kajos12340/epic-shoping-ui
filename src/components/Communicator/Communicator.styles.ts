@@ -3,7 +3,7 @@ import { Paper as PaperDefault } from '@material-ui/core';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Container = styled(PaperDefault)`
-  height: 80vh !important;
+  height: 83vh !important;
 `;
 
 export const Content = styled.div`
