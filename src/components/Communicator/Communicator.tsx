@@ -89,19 +89,21 @@ const Communicator = () => {
                 ))}
                 <div id="scrollAnchor" />
               </Messages>
-              <Input>
-                <TextField
-                  value={message}
-                  onChange={handleMessageChange}
-                  placeholder="Wpisz wiadomość"
-                  variant="outlined"
-                  label="Wiadomość"
-                  fullWidth
-                />
-                <IconButton onClick={handleMessageSend}>
-                  <SendIcon color="primary" fontSize="large" />
-                </IconButton>
-              </Input>
+              <form onSubmit={(e) => e.preventDefault()}>
+                <Input>
+                  <TextField
+                    value={message}
+                    onChange={handleMessageChange}
+                    placeholder="Wpisz wiadomość"
+                    variant="outlined"
+                    label="Wiadomość"
+                    fullWidth
+                  />
+                  <IconButton onClick={handleMessageSend} type="submit">
+                    <SendIcon color="primary" fontSize="large" />
+                  </IconButton>
+                </Input>
+              </form>
             </Content>
           </Box>
         </Container>
