@@ -53,7 +53,7 @@ const Navigation = () => {
         setCurrentActiveTab('messages');
         break;
       default:
-        setCurrentActiveTab('shopping');
+        setCurrentActiveTab('user');
     }
   }, [location]);
 

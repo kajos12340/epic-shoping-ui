@@ -1,9 +1,9 @@
 import React, { ComponentType } from 'react';
 import useAuthorize from '../hooks/useAuthorize/useAuthorize';
 
-const WithAuthorize = (Component: ComponentType) => () => {
+const WithAuthorize = (Component: ComponentType, allowAnonymous: boolean = false) => () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const authorized = useAuthorize();
+  const authorized = useAuthorize(allowAnonymous);
 
   if (authorized) return <Component />;
 
