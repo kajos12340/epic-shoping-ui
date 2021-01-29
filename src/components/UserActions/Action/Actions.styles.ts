@@ -12,6 +12,12 @@ export const Container = styled.section`
     
     & > div {
       margin-right: 10px;
+      color: red;
+      flex: 0 0 auto !important;
+    }
+    
+    & > h6 {
+      word-break: break-word;
     }
   }
 `;

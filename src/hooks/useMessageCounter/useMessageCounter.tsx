@@ -11,8 +11,6 @@ const UseMessageCounter = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // eslint-disable-next-line no-debugger
-    debugger;
     socket.current?.on('newMessage', () => {
       if (history.location.pathname !== '/messages') {
         dispatch(increaseCounter());

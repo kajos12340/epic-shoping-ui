@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { SnackbarProvider } from 'notistack';
 import CloseIcon from '@material-ui/icons/Close';
 import axios from 'axios';
+import moment from 'moment';
 
 import { setupAxiosBaseUrl, setToken } from './utils/axios/axios';
 import Router from './Router/Router';
@@ -39,6 +40,9 @@ const App = () => {
             login: data.login,
             email: data.email,
             id: data.id,
+            lastLoginDate: moment(data.lastLoginDate).format('DD.MM.YYYY HH:mm'),
+            registrationDate: moment(data.registrationDate).format('DD.MM.YYYY HH:mm'),
+            isConfirmed: data.isConfirmed,
           }));
         } catch (e) {
           history?.push('/user/login');

@@ -1,34 +1,41 @@
 import React from 'react';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Typography } from '@material-ui/core';
+import { useSelector } from 'react-redux';
+
+import { RootReducerState } from '../../../store/store';
 
 import {
   Container, Logo, Login, Email, LastLoginDate, RegisterDate,
 } from './MyData.styles';
 
-const MyData = () => (
-  <Container>
-    <Logo>
-      <AccountCircleIcon color="primary" />
-    </Logo>
-    <Login>
-      <Typography variant="h5">
-        Piotru
-      </Typography>
-    </Login>
-    <Email>
-      <label>Email:</label>
-      piotru@superpoczta.pl
-    </Email>
-    <LastLoginDate>
-      <label>Ostatnie logowanie:</label>
-      24.05.2020 11:45
-    </LastLoginDate>
-    <RegisterDate>
-      <label>Data rejestracji:</label>
-      23.05.2020 11:45
-    </RegisterDate>
-  </Container>
-);
+const MyData = () => {
+  const userData = useSelector((state: RootReducerState) => state.user);
+
+  return (
+    <Container>
+      <Logo>
+        <AccountCircleIcon color="primary" />
+      </Logo>
+      <Login>
+        <Typography variant="h5">
+          {userData.login}
+        </Typography>
+      </Login>
+      <Email>
+        <div>Email:</div>
+        <div>{userData.email}</div>
+      </Email>
+      <LastLoginDate>
+        <div>Ostatnie logowanie:</div>
+        <div>{userData.lastLoginDate}</div>
+      </LastLoginDate>
+      <RegisterDate>
+        <div>Data rejestracji:</div>
+        <div>{userData.registrationDate}</div>
+      </RegisterDate>
+    </Container>
+  );
+};
 
 export default MyData;

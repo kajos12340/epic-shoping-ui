@@ -4,6 +4,9 @@ export interface IUser {
   id: string,
   login: string,
   email: string,
+  registrationDate: string,
+  lastLoginDate: string,
+  isConfirmed: boolean,
 }
 
 export interface ActionType {

@@ -6,6 +6,7 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import { Link as RouterLink, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
+import moment from 'moment';
 
 import { useDispatch } from 'react-redux';
 import useForm from '../../hooks/useForm/useForm';
@@ -43,6 +44,9 @@ const LoginForm = () => {
         login: data.login,
         email: data.email,
         id: data.id,
+        lastLoginDate: moment(data.lastLoginDate).format('DD.MM.YYYY HH:mm'),
+        registrationDate: moment(data.registrationDate).format('DD.MM.YYYY HH:mm'),
+        isConfirmed: data.isConfirmed,
       }));
       login(data.token);
       enqueueSnackbar('Zalogowano!', {
