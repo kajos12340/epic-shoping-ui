@@ -4,12 +4,15 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import user from './user/reducer';
 import { IUser } from './user/types';
+import messageCounter from './messageCounter/reducer';
 
 const rootReducer = combineReducers({
   user,
+  messageCounter,
 });
 export interface RootReducerState {
   user: IUser,
+  messageCounter: number,
 }
 
 const middlewares = applyMiddleware(thunkMiddleware);

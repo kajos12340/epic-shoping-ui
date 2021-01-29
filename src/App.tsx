@@ -11,6 +11,7 @@ import Router from './Router/Router';
 import Navigation from './components/Navigation/Navigation';
 import theme from './Theme/Theme';
 import { setUser } from './store/user/actions';
+import useMessageCounter from './hooks/useMessageCounter/useMessageCounter';
 
 import { Main } from './App.styles';
 
@@ -20,6 +21,7 @@ const App = () => {
   const snackbarsRef = useRef<SnackbarProvider>() as RefObject<SnackbarProvider>;
   const dispatch = useDispatch();
   const history = useHistory();
+  useMessageCounter();
 
   const onDismissClick = (key: any) => () => {
     // @ts-ignore

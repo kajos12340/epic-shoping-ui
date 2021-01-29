@@ -12,8 +12,6 @@ const UseAuthorize = (allowAnonymous: boolean) => {
   const history = useHistory();
 
   useEffect(() => {
-    // eslint-disable-next-line no-debugger
-    debugger;
     if (!allowAnonymous && !user && !localStorage.getItem('token')) {
       enqueueSnackbar('Zaloguj się aby uzyskać dostęp do tej zakładki!', {
         variant: 'error',
