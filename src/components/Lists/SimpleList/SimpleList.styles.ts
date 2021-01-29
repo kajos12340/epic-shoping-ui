@@ -5,7 +5,7 @@ export const Container = styled.section`
   
   display: grid;
   grid-template: "logo date" auto
-                 "logo title" 4rem
+                 "logo title" minmax(4rem, auto)
                  "navigation navigation" 3em
                  / auto 1fr;
   grid-column-gap: 20px;
