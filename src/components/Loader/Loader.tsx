@@ -4,13 +4,14 @@ import { Container, Icon } from './Loader.styled';
 
 interface ILoaderProps {
   visible: boolean,
+  absolute?: boolean
 }
 
-const Loader = ({ visible }: ILoaderProps) => {
+const Loader = ({ visible, absolute = false }: ILoaderProps) => {
   if (!visible) return null;
 
   return (
-    <Container>
+    <Container absolute>
       <Icon color="primary" style={{ fontSize: 80 }} />
     </Container>
   );

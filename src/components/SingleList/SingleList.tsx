@@ -57,11 +57,9 @@ const SingleList = () => {
   }, []);
 
   const handleListCancellation = useCallback(() => {
-    console.log('handleListCancellation', id);
     setConfirmDialogOpen(false);
   }, [id]);
 
-  console.log(id);
   return (
     <>
       <Paper>

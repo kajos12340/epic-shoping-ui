@@ -29,7 +29,6 @@ const NewListForm = () => {
         password: values.password,
       });
 
-      console.log(data);
       enqueueSnackbar('Dodano listę!', {
         variant: 'success',
       });

@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 
 // eslint-disable-next-line import/prefer-default-export
-export const Container = styled.div`
-  position: fixed;
+export const Container = styled.div<{ absolute: boolean }>`
+  position: ${({ absolute }) => (absolute ? 'absolute' : 'fixed')};
   display: flex;
   justify-content: center;
   align-items: center;

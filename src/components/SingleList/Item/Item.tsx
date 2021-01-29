@@ -25,7 +25,6 @@ const Item = ({
   }, []);
 
   const handleDelete = useCallback(() => {
-    console.log('handleDelete ', name);
     setDeleteConfirmationModalOpen(false);
   }, [name]);
 

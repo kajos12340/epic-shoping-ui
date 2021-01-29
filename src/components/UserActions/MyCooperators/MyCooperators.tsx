@@ -1,37 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import {
   List, ListItem, ListItemAvatar, ListItemText, Avatar, Divider,
 } from '@material-ui/core';
+import axios from 'axios';
+import CheckIcon from '@material-ui/icons/Check';
+import CloseIcon from '@material-ui/icons/Close';
 
-const MyCooperators = () => (
-  <List>
-    <ListItem>
-      <ListItemAvatar>
-        <Avatar>
-          M
-        </Avatar>
-      </ListItemAvatar>
-      <ListItemText primary="Majaczek" secondary="Data rejestracji: 24.09.2020" />
-    </ListItem>
-    <Divider />
-    <ListItem>
-      <ListItemAvatar>
-        <Avatar color="primary">
-          P
-        </Avatar>
-      </ListItemAvatar>
-      <ListItemText primary="Piotraczek" secondary="Data rejestracji: 24.11.2020" />
-    </ListItem>
-    <Divider />
-    <ListItem>
-      <ListItemAvatar>
-        <Avatar>
-          T
-        </Avatar>
-      </ListItemAvatar>
-      <ListItemText primary="Testowy" secondary="Data rejestracji: 25.09.2020" />
-    </ListItem>
-  </List>
-);
+import Loader from '../../Loader/Loader';
+
+interface IUserSimple {
+  login: string,
+  registrationDate: string,
+  isConfirmed: string,
+}
+
+const MyCooperators = () => {
+  const [users, setUsers] = useState<IUserSimple[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const { data } = await axios.get('/auth/get-users');
+      setUsers(data.users);
+      setLoading(false);
+    };
+    fetchUsers();
+  }, []);
+
+  return (
+    <List>
+      <Loader visible={loading} />
+      {users.map((user, idx) => (
+        <Fragment key={user.login}>
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar>
+                {user.login[0]}
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary={user.login} secondary={`Data rejestracji: ${user.registrationDate}`} />
+            {user.isConfirmed ? <CheckIcon color="primary" /> : <CloseIcon color="error" />}
+          </ListItem>
+          {(idx < users.length) && <Divider />}
+        </Fragment>
+      ))}
+    </List>
+  );
+};
 
 export default MyCooperators;
