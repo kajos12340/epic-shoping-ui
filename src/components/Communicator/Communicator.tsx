@@ -55,8 +55,7 @@ const Communicator = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      socket.current?.emit('getMessages', 1);
-      setLoading(false);
+      socket.current?.emit('getMessages');
     }, 500);
 
     socket.current?.on('messagesList', (newMessages: IMessageFromBE[]) => {
@@ -66,6 +65,7 @@ const Communicator = () => {
         text: newMessage.text,
       });
 
+      setLoading(false);
       setMessages(newMessages.map((messageFromBE) => mapMessage(messageFromBE)));
     });
   }, [socket]);

@@ -3,18 +3,25 @@ import {
   ListItem, ListItemText, ListItemSecondaryAction, IconButton, ListItemIcon, Switch,
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { useParams } from 'react-router-dom';
+
 import Dialog from '../../Dialog/Dialog';
+import useSocket from '../../../hooks/useSocket/useSocket';
 
 export interface IItem {
+  _id: string,
   name: string,
   unit: string,
   quantity: number,
+  inCart: boolean,
 }
 
 const Item = ({
-  name, unit, quantity,
+  name, unit, quantity, _id, inCart,
 }: IItem) => {
   const [deleteConfirmationModelOpen, setDeleteConfirmationModalOpen] = useState(false);
+  const { id: listId } = useParams<{ id: string }>();
+  const socket = useSocket();
 
   const handleModalClose = useCallback(() => {
     setDeleteConfirmationModalOpen(false);
@@ -25,8 +32,21 @@ const Item = ({
   }, []);
 
   const handleDelete = useCallback(() => {
+    socket.current?.emit('removeProduct', {
+      listId,
+      productId: _id,
+    });
     setDeleteConfirmationModalOpen(false);
-  }, [name]);
+  }, [_id, listId]);
+
+  const toggleItem = useCallback(() => {
+    socket.current?.emit('changeInCartState', {
+      newValue: !inCart,
+      productId: _id,
+      listId,
+    });
+    setDeleteConfirmationModalOpen(false);
+  }, [_id, listId, inCart]);
 
   return (
     <ListItem role={undefined} dense>
@@ -42,8 +62,8 @@ const Item = ({
       <ListItemSecondaryAction>
         <Switch
           edge="end"
-          // onChange={handleToggle('wifi')}
-          // checked={checked.indexOf('wifi') !== -1}
+          onChange={toggleItem}
+          checked={inCart}
         />
       </ListItemSecondaryAction>
       <Dialog

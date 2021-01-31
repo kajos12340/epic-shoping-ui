@@ -13,17 +13,20 @@ export interface ISimpleListItem {
   date: string,
   isActive: boolean,
   productsNumber: number,
-  id: string,
-  author: string,
+  _id: string,
+  author: {
+    _id: string,
+    login: string,
+  },
 }
 
 const SimpleList = ({
-  name, date, isActive, productsNumber, id, author,
+  name, date, isActive, productsNumber, _id, author,
 }: ISimpleListItem) => {
   const history = useHistory();
 
   const handleListRedirect = () => {
-    history.push(`/shopping/list/${id}`);
+    history.push(`/shopping/list/${_id}`);
   };
 
   return (
@@ -32,7 +35,7 @@ const SimpleList = ({
         <ShoppingCartOutlinedIcon />
       </Icon>
       <Date>
-        {`${date} - ${author}`}
+        {`${date} - ${author.login}`}
       </Date>
       <Title>
         <Typography variant="h6" style={{ wordBreak: 'break-word' }}>{name}</Typography>

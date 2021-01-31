@@ -2,10 +2,12 @@ import React, { FormEvent, useMemo } from 'react';
 import { IconButton, MenuItem } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { useParams } from 'react-router-dom';
 
 import useForm from '../../../hooks/useForm/useForm';
 import Input, { IValidator } from '../../Input/Input';
 import { required } from '../../../validators/Validators';
+import useSocket from '../../../hooks/useSocket/useSocket';
 
 import {
   Form, Buttons, Name, Quantity, Unit,
@@ -14,6 +16,8 @@ import {
 const NewItemForm = () => {
   const form = useForm();
   const { enqueueSnackbar } = useSnackbar();
+  const { id } = useParams<{ id: string }>();
+  const socket = useSocket();
 
   const handleSubmit = async (e: FormEvent) => {
     const values = form.submit(e, validators);
@@ -23,7 +27,12 @@ const NewItemForm = () => {
         return;
       }
 
-      enqueueSnackbar('Zalogowano!', {
+      socket.current?.emit('addProduct', {
+        ...values,
+        shoppingListId: id,
+      });
+
+      enqueueSnackbar('Dodano produkt do listy!', {
         variant: 'success',
       });
     } catch (err) {
