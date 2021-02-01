@@ -33,7 +33,7 @@ const Lists = () => {
     socket.current?.on('shoppingLists', (newLists: any) => {
       setLists(newLists);
     });
-  }, []);
+  }, [socket]);
 
   useEffect(() => {
     const newFilteredData = lists.filter((item) => {

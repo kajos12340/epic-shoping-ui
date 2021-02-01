@@ -49,6 +49,12 @@
     "lint": "eslint --ext .tsx --ext .ts src/",
     "lint_fix": "eslint --ext .tsx --ext .js --ext .ts src/ --fix"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test",
+      "pre-push": "npm run lint && npm run test && npm run build"
+    }
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -117,6 +123,7 @@
     "@types/socket.io": "2.1.13",
     "@types/socket.io-client": "1.4.35",
     "eslint-config-airbnb": "18.2.1",
+    "husky": "^4.3.8",
     "npm": "6.14.11"
   }
 }

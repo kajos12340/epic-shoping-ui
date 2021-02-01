@@ -1,5 +1,5 @@
 import React, {
-  ChangeEvent, useCallback, useEffect, useRef, useState,
+  ChangeEvent, useCallback, useEffect, useState,
 } from 'react';
 import {
   Box, Grid, TextField, IconButton,

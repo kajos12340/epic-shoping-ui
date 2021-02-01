@@ -1,4 +1,4 @@
-import React, { ReactNode, MouseEvent } from 'react';
+import React, { ReactNode } from 'react';
 import DialogDefault from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';

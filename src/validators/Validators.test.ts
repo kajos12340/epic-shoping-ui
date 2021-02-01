@@ -5,6 +5,6 @@ describe('validators', () => {
     const invalidText = 'Pole jest wymagane!';
     expect(Validators.required('')).toBe(invalidText);
     expect(Validators.required(false)).toBe(invalidText);
-    expect(Validators.required('value')).toBe('');
+    expect(Validators.required('value')).toBe('2');
   });
 });
