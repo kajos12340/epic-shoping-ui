@@ -62,7 +62,7 @@ const SingleList = () => {
       });
       history.push('/shopping/lists');
     });
-  }, [listId]);
+  }, [listId, enqueueSnackbar, history, socket]);
 
   const handleConfirmDialogOpen = useCallback(() => {
     setConfirmDialogOpen(true);
@@ -75,7 +75,7 @@ const SingleList = () => {
   const handleListCancellation = useCallback(() => {
     socket.current?.emit('closeList', listId);
     setConfirmDialogOpen(false);
-  }, []);
+  }, [listId, socket]);
 
   const progressValue = useMemo(() => {
     const inCartLength = productList.filter((item) => item.inCart).length;

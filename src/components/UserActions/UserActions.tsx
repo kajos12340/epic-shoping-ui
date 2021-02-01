@@ -45,7 +45,7 @@ const UserActions = () => {
     enqueueSnackbar('Wylogowano!', {
       variant: 'success',
     });
-  }, [history]);
+  }, [history, history, enqueueSnackbar]);
 
   return (
     <Grid container>

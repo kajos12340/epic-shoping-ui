@@ -37,7 +37,7 @@ const Item = ({
       productId: _id,
     });
     setDeleteConfirmationModalOpen(false);
-  }, [_id, listId]);
+  }, [_id, listId, socket]);
 
   const toggleItem = useCallback(() => {
     socket.current?.emit('changeInCartState', {
@@ -46,7 +46,7 @@ const Item = ({
       listId,
     });
     setDeleteConfirmationModalOpen(false);
-  }, [_id, listId, inCart]);
+  }, [_id, listId, inCart, socket]);
 
   return (
     <ListItem role={undefined} dense>

@@ -25,7 +25,7 @@ const UseAuthorize = (allowAnonymous: boolean) => {
     } else {
       setHasAccess(true);
     }
-  }, [user, enqueueSnackbar]);
+  }, [user, enqueueSnackbar, allowAnonymous, history]);
 
   return hasAccess;
 };
