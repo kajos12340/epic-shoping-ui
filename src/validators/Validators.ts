@@ -12,7 +12,7 @@ export const required: IValidator = (value) => {
 };
 
 export const number: IValidator = (value) => {
-  if (!value) {
+  if (value && Number.isNaN(+value)) {
     return 'Pole przyjmuje tylko całkowite wartości liczbowe!';
   }
   return '';
