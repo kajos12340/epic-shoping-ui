@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import App from './App';
 import store from './store/store';
 
@@ -18,3 +19,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
+
+serviceWorkerRegistration.register();
