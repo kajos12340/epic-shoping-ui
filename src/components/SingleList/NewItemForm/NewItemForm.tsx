@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 
 import useForm from '../../../hooks/useForm/useForm';
 import Input, { IValidator } from '../../Input/Input';
-import { required } from '../../../validators/Validators';
+import { required, positive } from '../../../validators/Validators';
 import useSocket from '../../../hooks/useSocket/useSocket';
 
 import {
@@ -45,7 +45,7 @@ const NewItemForm = () => {
 
   const validators: { [name: string]: IValidator } = useMemo(() => ({
     name: form.validate([required], 'name'),
-    quantity: form.validate([required], 'quantity'),
+    quantity: form.validate([required, positive], 'quantity'),
     unit: form.validate([required], 'unit'),
   }), [form]);
 

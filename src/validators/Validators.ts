@@ -39,3 +39,11 @@ export const sameAs = (fieldName: string): IValidator => (value, values) => {
   }
   return '';
 };
+
+export const positive: IValidator = (value) => {
+  if (!Number.isNaN(+value) && +value <= 0) {
+    return 'Podana wartość musi być > 0!';
+  }
+
+  return '';
+};
