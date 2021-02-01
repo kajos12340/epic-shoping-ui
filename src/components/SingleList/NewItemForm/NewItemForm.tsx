@@ -32,6 +32,7 @@ const NewItemForm = () => {
         shoppingListId: id,
       });
 
+      form.resetForm();
       enqueueSnackbar('Dodano produkt do listy!', {
         variant: 'success',
       });

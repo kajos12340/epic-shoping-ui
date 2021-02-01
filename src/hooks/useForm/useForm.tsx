@@ -26,6 +26,7 @@ export interface IForm {
   getValidationResult(name: string): string,
   submit: (e: FormEvent, validators: { [name: string]: IValidator }) =>
     null | { [name: string]: string | boolean },
+  resetForm(): void,
 }
 
 interface IInitialValues {
@@ -131,6 +132,10 @@ const UseForm = (initialValues?: IInitialValues): IForm => {
     return getFlatFormValues();
   };
 
+  const resetForm = () => {
+    setFormData({});
+  };
+
   return {
     getFlatFormValues,
     onChange,
@@ -141,6 +146,7 @@ const UseForm = (initialValues?: IInitialValues): IForm => {
     getValidationResult,
     submit,
     onSelectChange,
+    resetForm,
   };
 };
 

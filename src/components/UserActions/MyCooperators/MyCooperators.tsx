@@ -1,12 +1,14 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import {
-  List, ListItem, ListItemAvatar, ListItemText, Avatar, Divider,
+  ListItem, ListItemAvatar, ListItemText, Avatar, Divider,
 } from '@material-ui/core';
 import axios from 'axios';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 
 import Loader from '../../Loader/Loader';
+
+import { Container } from './MyCooperators.styles';
 
 interface IUserSimple {
   login: string,
@@ -28,8 +30,8 @@ const MyCooperators = () => {
   }, []);
 
   return (
-    <List>
-      <Loader visible={loading} />
+    <Container>
+      <Loader visible={loading} absolute />
       {users.map((user, idx) => (
         <Fragment key={user.login}>
           <ListItem>
@@ -44,7 +46,7 @@ const MyCooperators = () => {
           {(idx < users.length) && <Divider />}
         </Fragment>
       ))}
-    </List>
+    </Container>
   );
 };
 

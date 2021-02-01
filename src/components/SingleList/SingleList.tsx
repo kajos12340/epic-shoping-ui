@@ -1,9 +1,12 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  useCallback, useEffect, useMemo, useState,
+} from 'react';
 import {
-  Paper, List, Divider, Grid, Button,
+  Paper, List, Divider, Grid, Button, LinearProgress,
 } from '@material-ui/core';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
+import moment from 'moment';
 
 import ListHeader from './ListHeader/ListHeader';
 import Item, { IItem } from './Item/Item';
@@ -14,10 +17,22 @@ import Loader from '../Loader/Loader';
 
 import { ListContainer } from './SingleList.styles';
 
+interface IListSimple {
+  author: {
+    _id: string,
+    login: string,
+  },
+  creationDate: string,
+  name: string,
+  _id: string,
+  isActive: boolean,
+}
+
 const SingleList = () => {
   const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [productList, setProductList] = useState<IItem[]>([]);
+  const [listData, setListData] = useState<IListSimple>();
   const { id: listId } = useParams<{ id: string }>();
   const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
@@ -28,8 +43,13 @@ const SingleList = () => {
     if (listId) {
       setTimeout(() => {
         socket.current?.emit('getProducts', listId);
+        socket.current?.emit('getList', listId);
       }, 500);
     }
+
+    socket.current?.on('shoppingList', (data: any) => {
+      setListData(data);
+    });
 
     socket.current?.on('products', (newProducts: any) => {
       setProductList(newProducts);
@@ -57,17 +77,29 @@ const SingleList = () => {
     setConfirmDialogOpen(false);
   }, []);
 
+  const progressValue = useMemo(() => {
+    const inCartLength = productList.filter((item) => item.inCart).length;
+    return {
+      percentage: (inCartLength * 100) / productList.length,
+      inCartLength,
+      length: productList.length,
+    };
+  }, [productList]);
+
   return (
     <>
       <Paper>
         <Loader visible={loading} />
-        <ListHeader
-          counter={12}
-          count={45}
-          author="Pioter"
-          name="Super lista"
-          date="22.01.2021"
-        />
+        {listData && (
+          <ListHeader
+            counter={progressValue.inCartLength}
+            count={progressValue.length}
+            author={listData.author?.login}
+            name={listData.name}
+            date={moment(listData.creationDate).format('DD.MM.YYYY')}
+          />
+        )}
+        <LinearProgress variant="determinate" value={progressValue.percentage} />
         <ListContainer>
           <List dense>
             {productList.map((item) => (

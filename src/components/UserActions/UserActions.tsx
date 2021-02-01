@@ -73,7 +73,11 @@ const UserActions = () => {
         </Box>
       </Grid>
 
-      <Dialog open={cooperatorsModalOpen} onClose={closeCooperatorsModal} title="Moi współzakupowicze">
+      <Dialog
+        open={cooperatorsModalOpen}
+        onClose={closeCooperatorsModal}
+        title="Moi współzakupowicze"
+      >
         <MyCooperators />
       </Dialog>
       <Dialog open={myDataModalOpen} onClose={closeMyDataModal} title="Moje dane">

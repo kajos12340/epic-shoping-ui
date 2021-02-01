@@ -20,7 +20,14 @@ interface IDialogProps {
 const Dialog = ({
   open, onClose, title, children, confirmFooter, okCallback, cancelCallback,
 }: IDialogProps) => (
-  <DialogDefault open={open} onClose={onClose} disableBackdropClick fullWidth maxWidth="sm">
+  <DialogDefault
+    open={open}
+    onClose={onClose}
+    disableBackdropClick
+    fullWidth
+    maxWidth="sm"
+    style={{ minHeight: '15vh' }}
+  >
     <DialogTitle>
       {title}
       <CloseButton aria-label="close" onClick={onClose}>
