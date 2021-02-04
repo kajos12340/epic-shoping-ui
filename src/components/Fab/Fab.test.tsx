@@ -5,13 +5,11 @@ import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 import Fab, { IFabProps } from './Fab';
 
 describe('Fab', () => {
-  const createWrapper = ({ onClick, children }: IFabProps) => {
-    return mount(
-      <Fab onClick={onClick}>
-        {children}
-      </Fab>,
-    );
-  };
+  const createWrapper = ({ onClick, children }: IFabProps) => mount(
+    <Fab onClick={onClick}>
+      {children}
+    </Fab>,
+  );
 
   it('should match snapshot', () => {
     const wrapper = createWrapper({
