@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 
 import { PositionedFab } from './Fab.styles';
 
-interface IFabProps {
+export interface IFabProps {
   onClick(): any,
   children: ReactElement,
 }

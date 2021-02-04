@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SimpleList should match snapshot for active list 1`] = `ReactWrapper {}`;
+
+exports[`SimpleList should match snapshot for inactive list 1`] = `ReactWrapper {}`;

@@ -15,7 +15,7 @@ export interface IMessage {
   date: string,
 }
 
-interface IMessageProps extends IMessage{
+export interface IMessageProps extends IMessage{
   isOwn: boolean,
 }
 

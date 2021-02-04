@@ -7,12 +7,12 @@ import { DialogActions, Button } from '@material-ui/core';
 
 import { CloseButton } from './Dialog.styles';
 
-interface IDialogProps {
+export interface IDialogProps {
   open: boolean,
   onClose(): any,
   title: string,
   children: ReactNode,
-  confirmFooter?: ReactNode,
+  confirmFooter?: boolean,
   okCallback?(): any,
   cancelCallback?(): any,
 }

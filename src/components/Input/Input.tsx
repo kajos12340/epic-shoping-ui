@@ -9,7 +9,7 @@ export interface IValidator {
   (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement> | null): void,
 }
 
-interface IInputProps {
+export interface IInputProps {
   id: string,
   label: string,
   form: IForm,

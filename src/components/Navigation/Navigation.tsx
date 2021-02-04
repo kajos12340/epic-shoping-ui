@@ -13,7 +13,7 @@ export interface IMenuOption {
   tabName: string,
 }
 
-const menuOptions: IMenuOption[] = [
+export const menuOptions: IMenuOption[] = [
   {
     icon: <ListOutlinedIcon />,
     to: '/shopping/lists',
