@@ -1,8 +1,10 @@
-import React, { RefObject, useEffect, useRef } from 'react';
+import React, {
+  ReactText, RefObject, useEffect, useRef,
+} from 'react';
 import { useHistory } from 'react-router-dom';
 import { Container, IconButton, ThemeProvider } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { SnackbarProvider } from 'notistack';
+import { SnackbarProvider, ProviderContext, useSnackbar } from 'notistack';
 import CloseIcon from '@material-ui/icons/Close';
 import axios from 'axios';
 import moment from 'moment';
@@ -19,15 +21,9 @@ import { Main } from './App.styles';
 setupAxiosBaseUrl(process.env.REACT_APP_BE_ADDRESS);
 
 const App = () => {
-  const snackbarsRef = useRef<SnackbarProvider>() as RefObject<SnackbarProvider>;
   const dispatch = useDispatch();
   const history = useHistory();
   useMessageCounter();
-
-  const onDismissClick = (key: any) => () => {
-    // @ts-ignore
-    snackbarsRef.current?.closeSnackbar(key);
-  };
 
   useEffect(() => {
     (async () => {
@@ -56,12 +52,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <SnackbarProvider
         maxSnack={3}
-        ref={snackbarsRef}
-        action={(key) => (
-          <IconButton onClick={onDismissClick(key)} color="inherit">
-            <CloseIcon />
-          </IconButton>
-        )}
+        autoHideDuration={3000}
       >
         <Navigation />
         <Main>

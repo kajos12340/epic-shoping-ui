@@ -55,7 +55,7 @@ const NewItemForm = () => {
         <Input
           id="name"
           label="Nazwa produktu"
-          form={form}
+          formState={form}
           validators={validators}
         />
       </Name>
@@ -63,7 +63,7 @@ const NewItemForm = () => {
         <Input
           id="quantity"
           label="Ilość"
-          form={form}
+          formState={form}
           validators={validators}
           type="number"
         />
@@ -72,7 +72,7 @@ const NewItemForm = () => {
         <Input
           id="unit"
           label="Jednostka"
-          form={form}
+          formState={form}
           validators={validators}
           type="select"
         >

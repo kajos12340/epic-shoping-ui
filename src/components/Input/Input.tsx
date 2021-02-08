@@ -1,4 +1,4 @@
-import React, { FocusEvent, ReactNode } from 'react';
+import React, { FocusEvent, ReactNode, HTMLProps } from 'react';
 import {
   TextField, FormControl, InputLabel, Select, FormHelperText,
 } from '@material-ui/core';
@@ -10,42 +10,39 @@ export interface IValidator {
 }
 
 export interface IInputProps {
-  id: string,
-  label: string,
-  form: IForm,
+  formState: IForm,
   validators: {
     [name: string]: IValidator,
   },
   autoFocus?: boolean,
-  type?: string,
-  defaultValue?: string,
   children?: ReactNode,
+  id: string,
 }
 
 const Input = ({
-  label, id, form, validators, autoFocus = false, type = 'text', defaultValue, children,
-}: IInputProps) => {
+  label, id, formState, validators, autoFocus = false, type = 'text', defaultValue, children,
+}: HTMLProps<HTMLInputElement> & IInputProps) => {
   if (type === 'select') {
     return (
-      <FormControl variant="outlined" error={!!form.getValidationResult(id)} fullWidth>
+      <FormControl variant="outlined" error={!!formState.getValidationResult(id)} fullWidth>
         <InputLabel id={`select-label-${id}`}>{label}</InputLabel>
         <Select
           labelId={`select-label-${id}`}
           id={`select-${id}`}
           variant="outlined"
-          value={form.getValue(id) || ''}
-          onChange={form.onSelectChange}
+          value={formState.getValue(id) || ''}
+          onChange={formState.onSelectChange}
           label={label}
           onBlur={validators[id]}
           name={id}
           autoComplete={id}
           autoFocus={autoFocus}
-          error={!!form.getValidationResult(id)}
+          error={!!formState.getValidationResult(id)}
           fullWidth
         >
           {children}
         </Select>
-        <FormHelperText>{form.getValidationResult(id)}</FormHelperText>
+        <FormHelperText>{formState.getValidationResult(id)}</FormHelperText>
       </FormControl>
     );
   }
@@ -60,11 +57,11 @@ const Input = ({
       name={id}
       autoComplete={id}
       autoFocus={autoFocus}
-      value={form.getValue(id) || ''}
-      onChange={form.onChange}
+      value={formState.getValue(id) || ''}
+      onChange={formState.onChange}
       onBlur={validators[id]}
-      error={!!form.getValidationResult(id)}
-      helperText={form.getValidationResult(id)}
+      error={!!formState.getValidationResult(id)}
+      helperText={formState.getValidationResult(id)}
       type={type}
       InputLabelProps={type === 'date' ? {
         shrink: true,

@@ -80,26 +80,26 @@ const RegisterForm = () => {
               <Input
                 id="login"
                 label="Login"
-                form={form}
+                formState={form}
                 validators={validators}
               />
               <Input
                 id="email"
                 label="Adres email"
-                form={form}
+                formState={form}
                 validators={validators}
               />
               <Input
                 id="password"
                 label="Hasło"
-                form={form}
+                formState={form}
                 validators={validators}
                 type="password"
               />
               <Input
                 id="repassword"
                 label="Powtórz hasło"
-                form={form}
+                formState={form}
                 validators={validators}
                 type="password"
               />

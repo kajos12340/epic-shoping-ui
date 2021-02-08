@@ -30,21 +30,15 @@ const Lists = () => {
       setLoading(false);
     }, 500);
 
-    socket.current?.on('shoppingLists', (newLists: any) => {
+    socket.current?.on('shoppingLists', (newLists: ISimpleListItem[]) => {
       setLists(newLists);
     });
   }, [socket]);
 
   useEffect(() => {
-    const newFilteredData = lists.filter((item) => {
-      if (filterActive && item.isActive) {
-        return true;
-      }
-      if (filterInActive && !item.isActive) {
-        return true;
-      }
-      return false;
-    });
+    const newFilteredData = lists.filter((item) => (
+      (filterActive && item.isActive) || (filterInActive && !item.isActive)
+    ));
     setFilteredLists(newFilteredData);
   }, [filterActive, filterInActive, lists]);
 

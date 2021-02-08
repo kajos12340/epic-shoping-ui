@@ -25,7 +25,7 @@ describe('Input', () => {
         <Input
           id={id}
           label={label}
-          form={{
+          formState={{
             ...form,
             onChange,
           }}

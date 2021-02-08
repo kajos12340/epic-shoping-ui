@@ -62,7 +62,7 @@ const LoginForm = () => {
     }
   };
 
-  const validators: { [name: string]: IValidator } = useMemo(() => ({
+  const validators = useMemo(() => ({
     login: form.validate([required], 'login'),
     password: form.validate([required], 'password'),
   }), [form]);
@@ -85,13 +85,13 @@ const LoginForm = () => {
               <Input
                 id="login"
                 label="Login"
-                form={form}
+                formState={form}
                 validators={validators}
               />
               <Input
                 id="password"
                 label="Hasło"
-                form={form}
+                formState={form}
                 validators={validators}
                 type="password"
               />

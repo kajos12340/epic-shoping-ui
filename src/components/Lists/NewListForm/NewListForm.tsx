@@ -55,7 +55,7 @@ const NewListForm = ({ closeNewListDialog }: NewListFormProps) => {
         <Input
           id="name"
           label="Nazwa"
-          form={form}
+          formState={form}
           validators={validators}
         />
         <ButtonContainer>
