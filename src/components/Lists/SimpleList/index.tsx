@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import {
   Container, Icon, Date, Title, Navigation, ListInactive,
-} from './SimpleList.styles';
+} from './styles';
 
 export interface ISimpleListItem {
   name: string,

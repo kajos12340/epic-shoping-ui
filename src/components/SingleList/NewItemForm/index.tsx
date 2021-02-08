@@ -4,14 +4,14 @@ import { useSnackbar } from 'notistack';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { useParams } from 'react-router-dom';
 
-import useForm from '../../../hooks/useForm/useForm';
-import Input, { IValidator } from '../../Input/Input';
-import { required, positive } from '../../../validators/Validators';
-import useSocket from '../../../hooks/useSocket/useSocket';
+import useForm from '../../../hooks/useForm';
+import Index, { IValidator } from '../../Input';
+import { required, positive } from '../../../validators';
+import useSocket from '../../../hooks/useSocket';
 
 import {
   Form, Buttons, Name, Quantity, Unit,
-} from './NewItemForm.styles';
+} from './styles';
 
 const NewItemForm = () => {
   const form = useForm();
@@ -52,7 +52,7 @@ const NewItemForm = () => {
   return (
     <Form onSubmit={handleSubmit} noValidate>
       <Name>
-        <Input
+        <Index
           id="name"
           label="Nazwa produktu"
           formState={form}
@@ -60,7 +60,7 @@ const NewItemForm = () => {
         />
       </Name>
       <Quantity>
-        <Input
+        <Index
           id="quantity"
           label="Ilość"
           formState={form}
@@ -69,7 +69,7 @@ const NewItemForm = () => {
         />
       </Quantity>
       <Unit>
-        <Input
+        <Index
           id="unit"
           label="Jednostka"
           formState={form}
@@ -82,7 +82,7 @@ const NewItemForm = () => {
           <MenuItem value="l">l</MenuItem>
           <MenuItem value="ml">ml</MenuItem>
           <MenuItem value="packs">paczki</MenuItem>
-        </Input>
+        </Index>
       </Unit>
       <Buttons>
         <IconButton type="submit">

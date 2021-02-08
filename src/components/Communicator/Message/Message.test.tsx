@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { Icon, Container } from './Message.styles';
-import Message, { IMessageProps } from './Message';
+import Message, { IMessageProps } from './index';
 
 describe('Message', () => {
   const createWrapper = ({

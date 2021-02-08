@@ -9,12 +9,12 @@ import CloseIcon from '@material-ui/icons/Close';
 import axios from 'axios';
 import moment from 'moment';
 
-import { setupAxiosBaseUrl, setToken } from './utils/axios/axios';
+import { setupAxiosBaseUrl, setToken } from './utils/axios';
 import Router from './Router/Router';
-import Navigation from './components/Navigation/Navigation';
+import Navigation from './components/Navigation';
 import theme from './Theme/Theme';
 import { setUser } from './store/user/actions';
-import useMessageCounter from './hooks/useMessageCounter/useMessageCounter';
+import useMessageCounter from './hooks/useMessageCounter';
 
 import { Main } from './App.styles';
 

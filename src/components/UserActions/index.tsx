@@ -7,11 +7,11 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSnackbar } from 'notistack';
 
-import Dialog from '../Dialog/Dialog';
-import Action from './Action/Action';
-import MyCooperators from './MyCooperators/MyCooperators';
-import MyData from './MyData/MyData';
-import { logout } from '../../utils/auth/auth';
+import Dialog from '../Dialog';
+import Action from './Action';
+import MyCooperators from './MyCooperators';
+import MyData from './MyData';
+import { logout } from '../../utils/auth';
 import { clearUser } from '../../store/user/actions';
 
 const UserActions = () => {

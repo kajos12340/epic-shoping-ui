@@ -5,14 +5,14 @@ import {
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 import moment from 'moment';
 
-import Fab from '../Fab/Fab';
-import Dialog from '../Dialog/Dialog';
-import NewListForm from './NewListForm/NewListForm';
-import SimpleList, { ISimpleListItem } from './SimpleList/SimpleList';
-import useSocket from '../../hooks/useSocket/useSocket';
+import Fab from '../Fab';
+import Dialog from '../Dialog';
+import NewListForm from './NewListForm';
+import SimpleList, { ISimpleListItem } from './SimpleList';
+import useSocket from '../../hooks/useSocket';
 
-import { Filters } from './Lists.styles';
-import Loader from '../Loader/Loader';
+import { Filters } from './styles';
+import Loader from '../Loader';
 
 const Lists = () => {
   const [newListDialogOpen, setNewListDialogOpen] = useState(false);

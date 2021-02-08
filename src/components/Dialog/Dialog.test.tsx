@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Dialog as DialogDefault, DialogActions } from '@material-ui/core';
 
-import Dialog, { IDialogProps } from './Dialog';
+import Dialog, { IDialogProps } from './index';
 
 describe('Dialog', () => {
   const createWrapper = ({

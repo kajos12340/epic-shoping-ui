@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Icon } from './Loader.styled';
+import { Container, Icon } from './styles';
 
 interface ILoaderProps {
   visible: boolean,

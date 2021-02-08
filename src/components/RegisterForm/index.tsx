@@ -7,14 +7,14 @@ import { Link as RouterLink, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
 
-import useForm from '../../hooks/useForm/useForm';
+import useForm from '../../hooks/useForm';
 import {
   password, required, email, sameAs,
-} from '../../validators/Validators';
-import Input, { IValidator } from '../Input/Input';
-import Loader from '../Loader/Loader';
+} from '../../validators';
+import Index, { IValidator } from '../Input';
+import Loader from '../Loader';
 
-import { LoginLinkContainer, Avatar } from './RegisterForm.styles';
+import { LoginLinkContainer, Avatar } from './styles';
 
 const RegisterForm = () => {
   const [loading, setLoading] = useState(false);
@@ -77,26 +77,26 @@ const RegisterForm = () => {
               Rejestracja
             </Typography>
             <form noValidate onSubmit={handleSubmit}>
-              <Input
+              <Index
                 id="login"
                 label="Login"
                 formState={form}
                 validators={validators}
               />
-              <Input
+              <Index
                 id="email"
                 label="Adres email"
                 formState={form}
                 validators={validators}
               />
-              <Input
+              <Index
                 id="password"
                 label="Hasło"
                 formState={form}
                 validators={validators}
                 type="password"
               />
-              <Input
+              <Index
                 id="repassword"
                 label="Powtórz hasło"
                 formState={form}

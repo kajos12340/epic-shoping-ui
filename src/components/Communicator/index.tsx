@@ -8,14 +8,14 @@ import SendIcon from '@material-ui/icons/Send';
 import moment from 'moment';
 
 import { useSelector } from 'react-redux';
-import Message, { IMessage } from './Message/Message';
-import useSocket from '../../hooks/useSocket/useSocket';
-import Loader from '../Loader/Loader';
+import Message, { IMessage } from './Message';
+import useSocket from '../../hooks/useSocket';
+import Loader from '../Loader';
 import { getUserId } from '../../store/selectors';
 
 import {
   Container, Input, Content, Messages,
-} from './Communicator.styles';
+} from './styles';
 
 interface IMessageFromBE {
   author: {

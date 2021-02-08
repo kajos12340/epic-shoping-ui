@@ -5,7 +5,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import CloseIcon from '@material-ui/icons/Close';
 import { DialogActions, Button } from '@material-ui/core';
 
-import { CloseButton } from './Dialog.styles';
+import { CloseButton } from './styles';
 
 export interface IDialogProps {
   open: boolean,

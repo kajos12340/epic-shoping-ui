@@ -2,8 +2,8 @@ import React, { ChangeEvent } from 'react';
 import { mount } from 'enzyme';
 import { Select } from '@material-ui/core';
 
-import useForm from '../../hooks/useForm/useForm';
-import Input, { IValidator } from './Input';
+import useForm from '../../hooks/useForm';
+import Index, { IValidator } from './index';
 
 interface ISimpleInputProps {
   id: string,
@@ -22,7 +22,7 @@ describe('Input', () => {
     const Component = () => {
       const form = useForm();
       return (
-        <Input
+        <Index
           id={id}
           label={label}
           formState={{

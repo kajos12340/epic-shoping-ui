@@ -1,7 +1,7 @@
 import { Typography } from '@material-ui/core';
 import React, { ReactNode } from 'react';
 
-import { Container, IconContainer } from './Actions.styles';
+import { Container, IconContainer } from './styles';
 
 interface IActionProps {
   name: string,

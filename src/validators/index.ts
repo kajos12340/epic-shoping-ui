@@ -1,4 +1,4 @@
-import { IFormData } from '../hooks/useForm/useForm';
+import { IFormData } from '../hooks/useForm';
 
 export interface IValidator {
   (value: string | boolean, values?: IFormData): string

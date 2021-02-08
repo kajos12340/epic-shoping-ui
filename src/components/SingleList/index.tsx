@@ -8,14 +8,14 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import moment from 'moment';
 
-import ListHeader from './ListHeader/ListHeader';
-import Item, { IItem } from './Item/Item';
-import NewItemForm from './NewItemForm/NewItemForm';
-import useSocket from '../../hooks/useSocket/useSocket';
-import Dialog from '../Dialog/Dialog';
-import Loader from '../Loader/Loader';
+import ListHeader from './ListHeader';
+import Item, { IItem } from './Item';
+import NewItemForm from './NewItemForm';
+import useSocket from '../../hooks/useSocket';
+import Dialog from '../Dialog';
+import Loader from '../Loader';
 
-import { ListContainer } from './SingleList.styles';
+import { ListContainer } from './styles';
 
 interface IListSimple {
   author: {

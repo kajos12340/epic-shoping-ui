@@ -5,8 +5,8 @@ import configureMockStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
 import { Badge } from '@material-ui/core';
 
-import Menu from './Menu';
-import { menuOptions } from '../Navigation';
+import Menu from './index';
+import { menuOptions } from '../index';
 
 const mockStore = configureMockStore([]);
 

@@ -7,7 +7,7 @@ import { getUser } from '../../../store/selectors';
 
 import {
   Container, Logo, Login, Email, LastLoginDate, RegisterDate,
-} from './MyData.styles';
+} from './styles';
 
 const MyData = () => {
   const userData = useSelector(getUser);

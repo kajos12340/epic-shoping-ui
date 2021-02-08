@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 
-import Fab, { IFabProps } from './Fab';
+import Fab, { IFabProps } from './index';
 
 describe('Fab', () => {
   const createWrapper = ({ onClick, children }: IFabProps) => mount(

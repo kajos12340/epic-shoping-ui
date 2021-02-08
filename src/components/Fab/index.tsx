@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import { PositionedFab } from './Fab.styles';
+import { PositionedFab } from './styles';
 
 export interface IFabProps {
   onClick(): void,

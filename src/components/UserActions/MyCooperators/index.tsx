@@ -6,9 +6,9 @@ import axios from 'axios';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 
-import Loader from '../../Loader/Loader';
+import Loader from '../../Loader';
 
-import { Container } from './MyCooperators.styles';
+import { Container } from './styles';
 
 interface IUserSimple {
   login: string,

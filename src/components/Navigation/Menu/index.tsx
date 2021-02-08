@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Typography, IconButton, Badge } from '@material-ui/core';
 
-import { IMenuOption } from '../Navigation';
+import { IMenuOption } from '../index';
 import { getMessageCounter } from '../../../store/selectors';
 
 import {
   Toolbar, ButtonsContainer, AppBar,
-} from './Menu.styles';
+} from './styles';
 
 interface ScreenMenuProps {
   menuOptions: IMenuOption[],

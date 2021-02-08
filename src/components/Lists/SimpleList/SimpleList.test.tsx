@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { Button } from '@material-ui/core';
 import { BrowserRouter } from 'react-router-dom';
 
-import SimpleList, { ISimpleListItem } from './SimpleList';
+import SimpleList, { ISimpleListItem } from './index';
 
 describe('SimpleList', () => {
   const propsBase = {

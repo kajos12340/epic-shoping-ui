@@ -9,14 +9,14 @@ import { useSnackbar } from 'notistack';
 import moment from 'moment';
 
 import { useDispatch } from 'react-redux';
-import useForm from '../../hooks/useForm/useForm';
-import { required } from '../../validators/Validators';
-import Input, { IValidator } from '../Input/Input';
-import Loader from '../Loader/Loader';
+import useForm from '../../hooks/useForm';
+import { required } from '../../validators';
+import Index, { IValidator } from '../Input';
+import Loader from '../Loader';
 import { setUser } from '../../store/user/actions';
-import { login } from '../../utils/auth/auth';
+import { login } from '../../utils/auth';
 
-import { RegisterLinkContainer, Avatar } from './LoginForm.styles';
+import { RegisterLinkContainer, Avatar } from './styles';
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
@@ -82,13 +82,13 @@ const LoginForm = () => {
               Logowanie
             </Typography>
             <form noValidate onSubmit={handleSubmit}>
-              <Input
+              <Index
                 id="login"
                 label="Login"
                 formState={form}
                 validators={validators}
               />
-              <Input
+              <Index
                 id="password"
                 label="Hasło"
                 formState={form}

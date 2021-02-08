@@ -4,7 +4,7 @@ import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineO
 import ListOutlinedIcon from '@material-ui/icons/ListOutlined';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 
-import Menu from './Menu/Menu';
+import Menu from './Menu';
 
 export interface IMenuOption {
   to: string,

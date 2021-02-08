@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   Content, Container, Icon, OwnContent, Date, Text,
-} from './Message.styles';
+} from './styles';
 
 export interface IMessage {
   author: {
