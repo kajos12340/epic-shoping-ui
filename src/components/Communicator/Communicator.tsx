@@ -10,12 +10,12 @@ import moment from 'moment';
 import { useSelector } from 'react-redux';
 import Message, { IMessage } from './Message/Message';
 import useSocket from '../../hooks/useSocket/useSocket';
+import Loader from '../Loader/Loader';
+import { getUserId } from '../../store/selectors';
 
 import {
   Container, Input, Content, Messages,
 } from './Communicator.styles';
-import Loader from '../Loader/Loader';
-import { RootReducerState } from '../../store/store';
 
 interface IMessageFromBE {
   author: {
@@ -33,7 +33,7 @@ const Communicator = () => {
   const [messages, setMessages] = useState<IMessage[]>([]);
 
   const socket = useSocket();
-  const userId = useSelector((state: RootReducerState) => state.user?.id);
+  const userId = useSelector(getUserId);
 
   const handleMessageChange = useCallback((e: ChangeEvent<HTMLInputElement>): void => {
     setMessage(e.target.value);
@@ -48,8 +48,7 @@ const Communicator = () => {
 
   useEffect(() => {
     if (messages.length) {
-      // @ts-ignore
-      document.getElementById('scrollAnchor').scrollIntoView();
+      document.getElementById('scrollAnchor')?.scrollIntoView();
     }
   }, [messages]);
 

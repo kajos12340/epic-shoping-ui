@@ -40,21 +40,8 @@ const Navigation = () => {
   const location = useLocation();
 
   useEffect(() => {
-    setCurrentActiveTab('');
-
-    switch (true) {
-      case location.pathname.includes('user'):
-        setCurrentActiveTab('user');
-        break;
-      case location.pathname.includes('shopping'):
-        setCurrentActiveTab('shopping');
-        break;
-      case location.pathname.includes('messages'):
-        setCurrentActiveTab('messages');
-        break;
-      default:
-        setCurrentActiveTab('user');
-    }
+    setCurrentActiveTab(['user', 'shopping', 'messages']
+      .find((it) => location.pathname.includes(it)) || 'user');
   }, [location]);
 
   return (

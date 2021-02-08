@@ -47,11 +47,11 @@ const SingleList = () => {
       }, 500);
     }
 
-    socket.current?.on('shoppingList', (data: any) => {
+    socket.current?.on('shoppingList', (data: IListSimple) => {
       setListData(data);
     });
 
-    socket.current?.on('products', (newProducts: any) => {
+    socket.current?.on('products', (newProducts: IItem[]) => {
       setProductList(newProducts);
       setLoading(false);
     });

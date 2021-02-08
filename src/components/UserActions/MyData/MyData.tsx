@@ -3,14 +3,14 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Typography } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 
-import { RootReducerState } from '../../../store/store';
+import { getUser } from '../../../store/selectors';
 
 import {
   Container, Logo, Login, Email, LastLoginDate, RegisterDate,
 } from './MyData.styles';
 
 const MyData = () => {
-  const userData = useSelector((state: RootReducerState) => state.user);
+  const userData = useSelector(getUser);
 
   return (
     <Container>

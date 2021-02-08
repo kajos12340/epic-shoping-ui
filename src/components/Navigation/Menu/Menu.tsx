@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Typography, IconButton, Badge } from '@material-ui/core';
 
 import { IMenuOption } from '../Navigation';
-import { RootReducerState } from '../../../store/store';
+import { getMessageCounter } from '../../../store/selectors';
 
 import {
   Toolbar, ButtonsContainer, AppBar,
@@ -16,7 +16,7 @@ interface ScreenMenuProps {
 }
 
 const Menu = ({ menuOptions, currentActiveTab }:ScreenMenuProps) => {
-  const messageCounter = useSelector((state: RootReducerState) => state.messageCounter);
+  const messageCounter = useSelector(getMessageCounter);
 
   return (
     <AppBar position="relative">

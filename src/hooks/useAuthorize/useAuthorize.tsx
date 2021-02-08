@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
-import { RootReducerState } from '../../store/store';
+import { getUser } from '../../store/selectors';
 
 const UseAuthorize = (allowAnonymous: boolean) => {
   const [hasAccess, setHasAccess] = useState(false);
-  const user = useSelector((state: RootReducerState) => state.user);
+  const user = useSelector(getUser);
   const { enqueueSnackbar } = useSnackbar();
   const history = useHistory();
 

@@ -9,12 +9,12 @@ import { CloseButton } from './Dialog.styles';
 
 export interface IDialogProps {
   open: boolean,
-  onClose(): any,
+  onClose(): void,
   title: string,
   children: ReactNode,
   confirmFooter?: boolean,
-  okCallback?(): any,
-  cancelCallback?(): any,
+  okCallback?(): void,
+  cancelCallback?(): void,
 }
 
 const Dialog = ({

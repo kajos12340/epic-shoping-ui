@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react';
 import { PositionedFab } from './Fab.styles';
 
 export interface IFabProps {
-  onClick(): any,
+  onClick(): void,
   children: ReactElement,
 }
 
