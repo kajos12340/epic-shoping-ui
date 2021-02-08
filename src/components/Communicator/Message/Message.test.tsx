@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { Icon, Container } from './Message.styles';
+import { Icon, Container } from './styles';
 import Message, { IMessageProps } from './index';
 
 describe('Message', () => {
