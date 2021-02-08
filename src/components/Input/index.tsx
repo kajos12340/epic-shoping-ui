@@ -3,7 +3,7 @@ import {
   TextField, FormControl, InputLabel, Select, FormHelperText,
 } from '@material-ui/core';
 
-import { IForm } from '../../hooks/useForm';
+import { IForm } from '@hooks/useForm';
 
 export interface IValidator {
   (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement> | null): void,
@@ -19,7 +19,7 @@ export interface IInputProps {
   id: string,
 }
 
-const Index = ({
+const Input = ({
   label, id, formState, validators, autoFocus = false, type = 'text', defaultValue, children,
 }: HTMLProps<HTMLInputElement> & IInputProps) => {
   if (type === 'select') {
@@ -71,4 +71,4 @@ const Index = ({
   );
 };
 
-export default Index;
+export default Input;

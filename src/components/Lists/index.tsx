@@ -5,14 +5,14 @@ import {
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 import moment from 'moment';
 
-import Fab from '../Fab';
-import Dialog from '../Dialog';
+import Fab from '@components/Fab';
+import Dialog from '@components/Dialog';
+import useSocket from '@hooks/useSocket';
+import Loader from '@components/Loader';
 import NewListForm from './NewListForm';
 import SimpleList, { ISimpleListItem } from './SimpleList';
-import useSocket from '../../hooks/useSocket';
 
 import { Filters } from './styles';
-import Loader from '../Loader';
 
 const Lists = () => {
   const [newListDialogOpen, setNewListDialogOpen] = useState(false);

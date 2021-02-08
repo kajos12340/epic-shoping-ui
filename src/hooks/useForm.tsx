@@ -2,7 +2,7 @@ import {
   useState, ChangeEvent, FormEvent, useEffect, ReactNode,
 } from 'react';
 
-import { IValidator } from '../components/Input';
+import { IValidator } from '@components/Input';
 
 interface IFormDataItem {
   value: string,

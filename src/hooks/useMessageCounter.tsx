@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import useSocket from './useSocket';
-import { increaseCounter } from '../store/messageCounter/actions';
+import { increaseCounter } from '@store/messageCounter/actions';
 
 const UseMessageCounter = () => {
   const socket = useSocket();

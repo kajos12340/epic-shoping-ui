@@ -3,7 +3,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Typography } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 
-import { getUser } from '../../../store/selectors';
+import { getUser } from '@store/selectors';
 
 import {
   Container, Logo, Login, Email, LastLoginDate, RegisterDate,

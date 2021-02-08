@@ -2,8 +2,8 @@ import React from 'react';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import Typography from '@material-ui/core/Typography';
 import { useHistory } from 'react-router-dom';
-
 import { Button } from '@material-ui/core';
+
 import {
   Container, Icon, Date, Title, Navigation, ListInactive,
 } from './styles';

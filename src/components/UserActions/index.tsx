@@ -7,12 +7,12 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSnackbar } from 'notistack';
 
-import Dialog from '../Dialog';
+import Dialog from '@components/Dialog';
+import { logout } from '@utils/auth';
+import { clearUser } from '@store/user/actions';
 import Action from './Action';
 import MyCooperators from './MyCooperators';
 import MyData from './MyData';
-import { logout } from '../../utils/auth';
-import { clearUser } from '../../store/user/actions';
 
 const UserActions = () => {
   const [cooperatorsModalOpen, setCooperatorsModalOpen] = useState(false);

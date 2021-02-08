@@ -2,11 +2,11 @@ import React, { FormEvent, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import { Button } from '@material-ui/core';
 
-import useForm from '../../../hooks/useForm';
-import Index, { IValidator } from '../../Input';
-import { required } from '../../../validators';
-import Loader from '../../Loader';
-import useSocket from '../../../hooks/useSocket';
+import useForm from '@hooks/useForm';
+import { required } from '@validators/index';
+import Loader from '@components/Loader';
+import useSocket from '@hooks/useSocket';
+import Input, { IValidator } from '@components/Input';
 
 import { ButtonContainer } from './styles';
 
@@ -52,7 +52,7 @@ const NewListForm = ({ closeNewListDialog }: NewListFormProps) => {
     <>
       <Loader visible={loading} />
       <form onSubmit={handleSubmit}>
-        <Index
+        <Input
           id="name"
           label="Nazwa"
           formState={form}

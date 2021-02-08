@@ -4,10 +4,10 @@ import { useSnackbar } from 'notistack';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { useParams } from 'react-router-dom';
 
-import useForm from '../../../hooks/useForm';
-import Index, { IValidator } from '../../Input';
-import { required, positive } from '../../../validators';
-import useSocket from '../../../hooks/useSocket';
+import useForm from '@hooks/useForm';
+import Index, { IValidator } from '@components/Input';
+import { required, positive } from '@validators/index';
+import useSocket from '@hooks/useSocket';
 
 import {
   Form, Buttons, Name, Quantity, Unit,

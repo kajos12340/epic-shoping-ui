@@ -2,8 +2,9 @@ import React from 'react';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import Typography from '@material-ui/core/Typography';
 
+import { Date, Icon, Title } from '@components/Lists/SimpleList/styles';
+
 import { Container } from './styles';
-import { Date, Icon, Title } from '../../Lists/SimpleList/styles';
 
 interface IListHeaderProps {
   counter: number,

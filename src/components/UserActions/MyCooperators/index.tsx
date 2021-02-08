@@ -6,7 +6,7 @@ import axios from 'axios';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 
-import Loader from '../../Loader';
+import Loader from '@components/Loader';
 
 import { Container } from './styles';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import RegisterForm from '../components/RegisterForm';
-import withAuthorize from '../hoc/withAuthorize';
+import RegisterForm from '@components/RegisterForm';
+import withAuthorize from '@hoc/withAuthorize';
 
 const Register = () => (
   <RegisterForm />

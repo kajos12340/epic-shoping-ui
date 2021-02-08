@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Typography, IconButton, Badge } from '@material-ui/core';
 
+import { getMessageCounter } from '@store/selectors';
 import { IMenuOption } from '../index';
-import { getMessageCounter } from '../../../store/selectors';
 
 import {
   Toolbar, ButtonsContainer, AppBar,

@@ -7,14 +7,14 @@ import { Link as RouterLink, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
 import moment from 'moment';
-
 import { useDispatch } from 'react-redux';
-import useForm from '../../hooks/useForm';
-import { required } from '../../validators';
-import Index, { IValidator } from '../Input';
-import Loader from '../Loader';
-import { setUser } from '../../store/user/actions';
-import { login } from '../../utils/auth';
+
+import useForm from '@hooks/useForm';
+import { required } from '@validators/index';
+import Input from '@components/Input';
+import Loader from '@components/Loader';
+import { setUser } from '@store/user/actions';
+import { login } from '@utils/auth';
 
 import { RegisterLinkContainer, Avatar } from './styles';
 
@@ -82,13 +82,13 @@ const LoginForm = () => {
               Logowanie
             </Typography>
             <form noValidate onSubmit={handleSubmit}>
-              <Index
+              <Input
                 id="login"
                 label="Login"
                 formState={form}
                 validators={validators}
               />
-              <Index
+              <Input
                 id="password"
                 label="Hasło"
                 formState={form}

@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react';
 import { mount } from 'enzyme';
 import { Select } from '@material-ui/core';
 
-import useForm from '../../hooks/useForm';
+import useForm from '@hooks/useForm';
 import Index, { IValidator } from './index';
 
 interface ISimpleInputProps {

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import Communicator from '../components/Communicator';
-import withAuthorize from '../hoc/withAuthorize';
-import { resetCounter } from '../store/messageCounter/actions';
+import Communicator from '@components/Communicator';
+import withAuthorize from '@hoc/withAuthorize';
+import { resetCounter } from '@store/messageCounter/actions';
 
 const Messages = () => {
   const dispatch = useDispatch();

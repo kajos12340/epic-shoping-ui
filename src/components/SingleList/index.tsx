@@ -8,12 +8,12 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import moment from 'moment';
 
+import useSocket from '@hooks/useSocket';
+import Dialog from '@components/Dialog';
+import Loader from '@components/Loader';
 import ListHeader from './ListHeader';
 import Item, { IItem } from './Item';
 import NewItemForm from './NewItemForm';
-import useSocket from '../../hooks/useSocket';
-import Dialog from '../Dialog';
-import Loader from '../Loader';
 
 import { ListContainer } from './styles';
 

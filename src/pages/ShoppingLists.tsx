@@ -1,7 +1,7 @@
 import React from 'react';
 
-import withAuthorize from '../hoc/withAuthorize';
-import Lists from '../components/Lists';
+import withAuthorize from '@hoc/withAuthorize';
+import Lists from '@components/Lists';
 
 const ShoppingLists = () => (
   <Lists />

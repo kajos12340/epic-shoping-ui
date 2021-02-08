@@ -6,12 +6,12 @@ import {
 } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 import moment from 'moment';
-
 import { useSelector } from 'react-redux';
+
+import useSocket from '@hooks/useSocket';
+import Loader from '@components/Loader';
+import { getUserId } from '@store/selectors';
 import Message, { IMessage } from './Message';
-import useSocket from '../../hooks/useSocket';
-import Loader from '../Loader';
-import { getUserId } from '../../store/selectors';
 
 import {
   Container, Input, Content, Messages,

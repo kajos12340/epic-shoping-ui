@@ -26,5 +26,6 @@
   "exclude": [
     "src/service-worker.ts",
     "src/serviceWorkerRegistration.ts"
-  ]
+  ],
+  "extends": "./tsconfig.paths"
 }

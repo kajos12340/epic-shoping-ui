@@ -5,8 +5,8 @@ import {
 import DeleteIcon from '@material-ui/icons/Delete';
 import { useParams } from 'react-router-dom';
 
-import Dialog from '../Dialog';
-import useSocket from '../../hooks/useSocket';
+import Dialog from '@components/Dialog';
+import useSocket from '@hooks/useSocket';
 
 export interface IItem {
   _id: string,

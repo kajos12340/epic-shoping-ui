@@ -1,20 +1,17 @@
-import React, {
-  ReactText, RefObject, useEffect, useRef,
-} from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Container, IconButton, ThemeProvider } from '@material-ui/core';
+import { Container, ThemeProvider } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { SnackbarProvider, ProviderContext, useSnackbar } from 'notistack';
-import CloseIcon from '@material-ui/icons/Close';
+import { SnackbarProvider } from 'notistack';
 import axios from 'axios';
 import moment from 'moment';
 
-import { setupAxiosBaseUrl, setToken } from './utils/axios';
-import Router from './Router/Router';
-import Navigation from './components/Navigation';
+import { setupAxiosBaseUrl, setToken } from '@utils/axios';
+import Navigation from '@components/Navigation';
+import { setUser } from '@store/user/actions';
+import useMessageCounter from '@hooks/useMessageCounter';
 import theme from './Theme/Theme';
-import { setUser } from './store/user/actions';
-import useMessageCounter from './hooks/useMessageCounter';
+import Router from './Router/Router';
 
 import { Main } from './App.styles';
 

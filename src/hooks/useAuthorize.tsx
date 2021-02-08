@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
-import { getUser } from '../store/selectors';
+import { getUser } from '@store/selectors';
 
 const UseAuthorize = (allowAnonymous: boolean) => {
   const [hasAccess, setHasAccess] = useState(false);
