@@ -1,3 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Message should match snapshot 1`] = `ShallowWrapper {}`;
+exports[`Message should match snapshot 1`] = `
+<styled.div
+  isOwn={true}
+>
+  <Styled(styled.div)
+    bgColor="#123456"
+  >
+    <styled.div
+      bgColor="#123456"
+    >
+      t
+    </styled.div>
+    <styled.div>
+      testLogin - 12:33 24.05.2020
+    </styled.div>
+    <styled.div>
+      test message
+    </styled.div>
+  </Styled(styled.div)>
+</styled.div>
+`;
