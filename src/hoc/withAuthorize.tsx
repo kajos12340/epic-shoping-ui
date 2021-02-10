@@ -1,5 +1,4 @@
 import React, { ComponentType } from 'react';
-import { Redirect } from 'react-router-dom';
 
 import useAuthorize from '@hooks/useAuthorize';
 
@@ -9,9 +8,7 @@ const WithAuthorize = (Component: ComponentType, allowAnonymous: boolean = false
 
   if (authorized) return <Component />;
 
-  if (authorized === null) return null;
-
-  return <Redirect to="/shopping/lists" />;
+  return null;
 };
 
 export default WithAuthorize;

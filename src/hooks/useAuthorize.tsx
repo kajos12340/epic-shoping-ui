@@ -6,22 +6,24 @@ import { useSnackbar } from 'notistack';
 import { getUser } from '@store/selectors';
 
 const UseAuthorize = (allowAnonymous: boolean) => {
-  const [hasAccess, setHasAccess] = useState<boolean | null>(false);
+  const [hasAccess, setHasAccess] = useState<boolean>(false);
   const user = useSelector(getUser);
   const { enqueueSnackbar } = useSnackbar();
   const history = useHistory();
 
   useEffect(() => {
-    if (!allowAnonymous && !user && !localStorage.getItem('token')) {
-      enqueueSnackbar('Zaloguj się aby uzyskać dostęp do tej zakładki!', {
-        variant: 'error',
-      });
-      history.push('/user/login');
-    } else if (allowAnonymous && (user || localStorage.getItem('token'))) {
-      if (['/user/login', '/user/register'].includes(history.location.pathname)) {
-        history.push('/shopping/lists');
+    const hasUser = user || localStorage.getItem('token');
+    if (!allowAnonymous) {
+      if (hasUser) {
+        setHasAccess(true);
+      } else {
+        enqueueSnackbar('Zaloguj się aby uzyskać dostęp do tej zakładki!', {
+          variant: 'error',
+        });
+        history.push('/user/login');
       }
-      setHasAccess(true);
+    } else if (hasUser && ['/user/login', '/user/register'].includes(history.location.pathname)) {
+      history.push('/shopping/lists');
     } else {
       setHasAccess(true);
     }
