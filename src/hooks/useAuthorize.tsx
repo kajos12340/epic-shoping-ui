@@ -22,7 +22,7 @@ const UseAuthorize = (allowAnonymous: boolean) => {
         });
         history.push('/user/login');
       }
-    } else if (hasUser && ['/user/login', '/user/register'].includes(history.location.pathname)) {
+    } else if (hasUser && ['/', '/user/login', '/user/register'].includes(history.location.pathname)) {
       history.push('/shopping/lists');
     } else {
       setHasAccess(true);

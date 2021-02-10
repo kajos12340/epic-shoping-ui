@@ -39,6 +39,7 @@ const App = () => {
           }));
         } catch (e) {
           history?.push('/user/login');
+          localStorage.removeItem('token');
           setToken(null);
         }
       }
