@@ -6,7 +6,7 @@ import { useSnackbar } from 'notistack';
 import { getUser } from '@store/selectors';
 
 const UseAuthorize = (allowAnonymous: boolean) => {
-  const [hasAccess, setHasAccess] = useState(false);
+  const [hasAccess, setHasAccess] = useState<boolean | null>(false);
   const user = useSelector(getUser);
   const { enqueueSnackbar } = useSnackbar();
   const history = useHistory();
